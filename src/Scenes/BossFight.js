@@ -4,4 +4,8 @@ class BossFight extends Phaser.Scene {
     constructor() {
         super("bossfightScene");
     }
+
+    create() {
+        
+    }
 }
