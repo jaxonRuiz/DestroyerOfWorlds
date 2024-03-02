@@ -46,6 +46,7 @@ class Preload extends Phaser.Scene {
         // set universal game settings
         game.settings = {
             scrollSpeed : 4, // in pixels
+            runPathHeight: 250, // strip of land to run on, in pixels
         }
     }
 
@@ -67,7 +68,7 @@ class Preload extends Phaser.Scene {
         keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
 
-        // this.scene.launch('menuScene'); check pls
+        this.scene.launch('menuScene'); // check pls
     }
 
 }
