@@ -1,3 +1,10 @@
+/**
+ * Jaxon Ruiz & Lyssa Li
+ * Project Name: Destroyer of Worlds: Arcade Edition
+ * Project Hours: approx 500
+ * Citations:
+ */
+
 let config = {
     type: Phaser.AUTO,
     width: 1280, 
@@ -11,7 +18,7 @@ let config = {
             debug: true
         }
     },
-    scene: [Menu, BossFight, Preload, GameOver, Credits]
+    scene: [Preload, Menu, BossFight, GameOver, Credits]
     // future scenes (?): EnemyFight
 }
 let game = new Phaser.Game(config);

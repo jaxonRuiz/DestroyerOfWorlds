@@ -42,6 +42,13 @@ class Preload extends Phaser.Scene {
 
     }
 
+    init() {
+        // set universal game settings
+        game.settings = {
+            scrollSpeed : 4, // in pixels
+        }
+    }
+
     create() {
 //let keyEnter, keyEsc, keyW, keyA, keyS, keyD, keySpace, keyShift, keyUp, keyLeft, keyRight, keyDown, keyDot, keyComma;
         // keys
@@ -59,6 +66,8 @@ class Preload extends Phaser.Scene {
         keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
+
+        // this.scene.launch('menuScene'); check pls
     }
 
 }
