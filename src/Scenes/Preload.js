@@ -7,22 +7,39 @@ class Preload extends Phaser.Scene {
 
     // loading all interscene assets here
     preload() {
+        this.load.setPath('./assets/');
         // ------ (planned) visual assets ------
 
         // planned assets to load:
+// TODOOO CHANGE THE SPRITE SHEET PATH WHEN WE GET ACTUAL SPITESSS
         // player1 sprite+animations
+        this.load.spritesheet('rigby_S', 'img/sampleSprite.png', {
+            frameWidth: 50,
+            frameHeight: 35,
+            startFrame: 0,
+            endFrame: 7
+        });
+
         // player2 sprite+animations
+        this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
+            frameWidth: 50,
+            frameHeight: 35,
+            startFrame: 0,
+            endFrame: 7
+        });
             // shot projectile sprite(s)
         // destroyerofworlds sprite+animations
             // mouth laser attack sprite+animation
             // eye laser attack projectiles
         // (scrolling) ground sprite
+        this.load.image('ground_T', 'img/ground.png'); // ground that players run on
         // background image 
             // split into layers for parralax probably?
             // foreground elements?
         // extra 'juice' effects and stuff? might conflict with 'arcade' style but might be cooler?
         // platforms(?)
         // ground obstacals(?) holes and stuff?
+        this.load.image('crater_S', 'img/crater.png');
         
         // ------ (planned) audio assets ------
 
@@ -46,7 +63,7 @@ class Preload extends Phaser.Scene {
         // set universal game settings
         game.settings = {
             scrollSpeed : 4, // in pixels
-            runPathHeight: 250, // strip of land to run on, in pixels
+            runPathHeight: 400, // strip of land to run on, in pixels
         }
     }
 
@@ -68,7 +85,16 @@ class Preload extends Phaser.Scene {
         keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
 
-        this.scene.launch('menuScene'); // check pls
+        // player animations        
+        this.anims.create({
+            key: `rigby-sample`,
+            repeat: -1,
+            frames: this.anims.generateFrameNumbers('rigby_S', {start: 0, end: 5}),
+            frameRate: 15,
+        })
+
+        this.scene.launch('menuScene'); // it works i think :D
     }
 
+    // add the loading screen somehow somewhere
 }
