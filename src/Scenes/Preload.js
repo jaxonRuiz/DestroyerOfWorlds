@@ -64,6 +64,7 @@ class Preload extends Phaser.Scene {
         game.settings = {
             scrollSpeed : 4, // in pixels
             runPathHeight: 400, // strip of land to run on, in pixels
+            craterSpawnSpeed: 1, // in seconds
         }
     }
 

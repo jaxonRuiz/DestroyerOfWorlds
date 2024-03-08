@@ -22,11 +22,15 @@ class BossFight extends Phaser.Scene {
         // update to player objects later
         this.rigby_P = this.add.sprite(game.config.width/2, game.config.width/2, "rigby_S")
             .setOrigin(0.5);
+
+        // create player
+        this.craters = new CraterGroup(this, [this.rigby_P], 5);
     }
 
     update() {
         // updating background
         this.ground_T.tilePositionX += game.settings.scrollSpeed;
+        this.craters.update();
 
         // MOVE ANIMATIONS TO PLAYER.JS LATERRR
         this.rigby_P.anims.play({ key: `rigby-sample` }, true);
