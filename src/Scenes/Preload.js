@@ -10,6 +10,7 @@ class Preload extends Phaser.Scene {
         console.log("start Preload Scene preload()");
         this.load.setPath('./assets/');
         // ------ (planned) visual assets ------
+        // (todo remove 'planned' later lol)
 
         // planned assets to load:
 // TODOOO CHANGE THE SPRITE SHEET PATH WHEN WE GET ACTUAL SPITESSS
@@ -25,6 +26,13 @@ class Preload extends Phaser.Scene {
         this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
             frameWidth: 50,
             frameHeight: 35,
+            startFrame: 0,
+            endFrame: 7
+        });
+
+        this.load.spritesheet("destroyer_S", "img/destroyerSpritesheet.png", {
+            frameWidth: 312,
+            frameHeight: 552,
             startFrame: 0,
             endFrame: 7
         });
@@ -101,7 +109,7 @@ class Preload extends Phaser.Scene {
         })
         console.log("finished Preload Scene create()");
         console.log("launching menu scene now...");
-        
+
         this.scene.launch('menuScene'); // it works i think :D
     }
 
