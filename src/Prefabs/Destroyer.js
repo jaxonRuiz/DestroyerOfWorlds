@@ -5,7 +5,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         scene.physics.add.existing(this);
-        this.maxHeight = y - (game.config.height/10);
+        this.maxHeight = y - (game.config.height/14);
         this.minHeight = y + (game.config.height/6);
         this.goingUp = false;
         this.speed = 100;
@@ -38,7 +38,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     }
 
     shootMouthLaser(x, y) {
-        
+
     }
 
     hover() {
