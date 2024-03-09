@@ -40,7 +40,7 @@ class BossFight extends Phaser.Scene {
         this.rigbyFSM.step();
         this.mordecaiFSM.step();
 
-        if (Phaser.Input.Keyboard.JustDown(keyUp)) {
+        if (Phaser.Input.Keyboard.JustDown(keyP1A)) {
             console.log("here"); // IT WORKS
         }
     }

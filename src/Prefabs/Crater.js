@@ -16,6 +16,8 @@ class Crater extends Phaser.GameObjects.Sprite {
         this.body.setImmovable(true);
         this.body.setAllowGravity(false) // FIND A WAY TO DISABLE GRAVITY GLOBALLY TYYY
         scene.add.existing(this);
+        this.setScale(0.75);
+        this.setDepth(-5);
 
         // set up collisions
         for (const object of collides) {
@@ -32,8 +34,8 @@ class Crater extends Phaser.GameObjects.Sprite {
 
     // for object pooling
     refactor() {
-        this.x = game.config.width + this.width + 10;
-        this.y = game.config.height - (Math.random() * (game.settings.runPathHeight-this.height));
+        this.x = game.config.width + this.width + Math.floor(Math.random() * 15)-5;
+        this.y = game.config.height - (Math.random() * (game.settings.runPathHeight-this.height) + this.height);
     }
     offScreen() {
         if (this.x + this.width < 0) {

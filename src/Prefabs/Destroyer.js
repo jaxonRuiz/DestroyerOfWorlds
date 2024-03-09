@@ -34,7 +34,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     }
 
     hover() {
-        console.log(this.percentHeight());
+        // console.log(this.percentHeight());
         if (this.goingUp) {
             this.body.setVelocityY(this.lerp(-this.speed, this.percentHeight())); // make custom lerp function?
             if (this.y <= this.maxHeight) {

@@ -17,16 +17,38 @@ class Player {
         this.hitbox.body.setSize(50, 20);
         this.hitbox.body.setOffset(-15, -10);
 
+        this.player = {
+            rigby: this.rigby,
+            mordecai: this.mordecai,
+            hitbox: this.hitbox,
+            setX: (x) => {
+                this.rigby.x += x;
+                this.mordecai.x += x;
+                this.hitbox.x += x;
+            },
+            setY: (y) => {
+                this.rigby.y += y;
+                this.mordecai.y += y;
+                this.hitbox.y += y
+            },
+            getX: () => {
+                return this.hitbox.x;
+            },
+            getY: () => {
+                return this.hitbox.y;
+            }
+        }
+
         // state machines
         scene.rigbyFSM = new StateMachine('idle', {
             idle: new R_IdleState(),
             aim: new R_AimState(),
             shoot: new R_ShootState(),
-        }, [scene, {rigby: this.rigby, mordecai: this.mordecai}]);
+        }, [scene, this.player]);
         scene.mordecaiFSM = new StateMachine('run', {
             run: new M_RunState(),
             dash: new M_DashState(),
-        }, [scene, {rigby: this.rigby, mordecai: this.mordecai}]);
+        }, [scene, this.player]);
     }
 
     update() {
@@ -74,9 +96,24 @@ class M_RunState extends State {
         // run animation
     }
     execute(scene, player) {
-        if(Phaser.Input.Keyboard.JustDown(keyShift)) {
+        if(Phaser.Input.Keyboard.JustDown(keyP1S2)) {
             this.stateMachine.transition('dash')
             return;
+        }
+
+        // general movement
+        if(keyP1W.isDown) {
+            player.setY(-game.settings.playerMoveSpeed);
+        } else if(keyP1A.isDown) {
+            player.setX(-game.settings.playerMoveSpeed/2);
+        } else if(keyP1S.isDown) {
+            player.setY(game.settings.playerMoveSpeed);
+        } else if(keyP1D.isDown) {
+            player.setX(game.settings.playerMoveSpeed);
+        }
+
+        if (player.getX() > 30) {
+            player.setX(-game.settings.scrollSpeed);
         }
     }
 }
@@ -85,8 +122,11 @@ class M_DashState extends State {
     enter(scene, player) {
         console.log("mordecai dashing");
         // run animation
-        player.mordecai.on('animationcomplete', () => {
-            this.stateMachine.transition('run');
-        });
+        // player.mordecai.on('animationcomplete', () => {
+        //     this.stateMachine.transition('run');
+        // });
+
+    }
+    execute() {
     }
 }
