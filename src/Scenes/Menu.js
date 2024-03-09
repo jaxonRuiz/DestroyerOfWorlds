@@ -4,7 +4,6 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-
         // test
         A =this.add.text(game.config.width/3, game.config.height/3, "(temporary) menu scene");
         B = this.add.text(game.config.width/2, game.config.height/2, "Enter to start | Shift for credits");

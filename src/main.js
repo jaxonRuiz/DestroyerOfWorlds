@@ -21,13 +21,15 @@ let config = {
             debug: true
         }
     },
+    pixelPerfect: true,
     pixelArt: true,
     scene: [Preload, Menu, BossFight, GameOver, Credits],
     // future scenes (?): EnemyFight
 }
 let game = new Phaser.Game(config);
 
-let keyEnter, keyEsc, keyW, keyA, keyS, keyD, keySpace, keyShift, keyUp, keyLeft, keyRight, keyDown, keyJ, keyK;
+// let keyEnter, keyEsc, keyW, keyA, keyS, keyD, keySpace, keyShift, keyUp, keyLeft, keyRight, keyDown, keyJ, keyK;
+let keyEnter, keyEsc, keyP1S1, keyP1S2, keyP1W, keyP1A, keyP1S, keyP1D, keyP2S1, keyP2S2, keyP2W, keyP2A, keyP2S, keyP2D;
 // not all keybinds strictly intended to be used
 // space/shift for player 1 use (jump/dash maybe?)
 // J/K for player 2 use (maybe change keys?) directional keys to aim, just one key to fire? other to load maybe...

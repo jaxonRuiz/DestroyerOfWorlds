@@ -107,8 +107,9 @@ class Preload extends Phaser.Scene {
         // set universal game settings
         game.settings = {
             scrollSpeed : 4, // in pixels
-            runPathHeight: 400, // strip of land to run on, in pixels
-            craterSpawnSpeed: 1, // in seconds
+            runPathHeight : 400, // strip of land to run on, in pixels
+            craterSpawnSpeed : 1.35, // in seconds
+            playerMoveSpeed : 6, // in pixels
         }
         console.log("finished Preload Scene init()");
 
@@ -116,22 +117,23 @@ class Preload extends Phaser.Scene {
 
     create() {
         console.log("start Preload Scene create()");
-//let keyEnter, keyEsc, keyW, keyA, keyS, keyD, keySpace, keyShift, keyUp, keyLeft, keyRight, keyDown, keyDot, keyComma;
+        
+        // mordecai player 1, rigby player 2
         // keys
         keyEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
         keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
-        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
-        keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-        keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-        keyShift = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
-        keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-        keyK = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
-        keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
+        keyP1W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
+        keyP1A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        keyP1S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+        keyP1D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+        keyP1S1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        keyP1S2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
+        keyP2W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        keyP2A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        keyP2S= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+        keyP2D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        keyP2S1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
+        keyP2S2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
 
         // player animations        
         // this.anims.create({
