@@ -55,9 +55,37 @@ class Preload extends Phaser.Scene {
         // ground obstacals(?) holes and stuff?
         this.load.image('crater_S', 'img/crater.png');
         
-        // ------ (planned) audio assets ------
+        // ------ audio assets ------
 
         // background track (boss theme)
+        this.load.audio("bg_music", "./assets/sounds/background-music.mp3");
+        this.load.audio("", "./assets/sounds/arcade-hit1.mp3");
+        this.load.audio("", "./assets/sounds/arcade-hit2.mp3");
+        this.load.audio("", "./assets/sounds/arcade-hit3.mp3");
+        this.load.audio("", "./assets/sounds/arcade-ascend-sfx.mp3");
+        this.load.audio("", "./assets/sounds/arcade-bleepNbloop.mp3");
+        this.load.audio("", "./assets/sounds/arcade-hurt-sfx.mp3");
+        this.load.audio("", "./assets/sounds/arcade-small-hit.mp3");
+        this.load.audio("", "./assets/sounds/arcade-success-sfx.mp3");
+        this.load.audio("", "./assets/sounds/charge-up.mp3");
+        this.load.audio("", "./assets/sounds/cheesy-win-sfx.mp3");
+        this.load.audio("", "./assets/sounds/collect-sfx1.mp3");
+        this.load.audio("", "./assets/sounds/collect-sfx2.mp3");
+        this.load.audio("", "./assets/sounds/defeat-boom.mp3");
+        this.load.audio("", "./assets/sounds/destroyer-laugh.mp3");
+        this.load.audio("", "./assets/sounds/game-over-sfx.mp3");
+        this.load.audio("", "./assets/sounds/heavy-laser-impact.mp3");
+        this.load.audio("", "./assets/sounds/heavy-laser-shot.mp3");
+        this.load.audio("", "./assets/sounds/heavyish-hit.mp3");
+        this.load.audio("", "./assets/sounds/hit1.mp3");
+        this.load.audio("", "./assets/sounds/hit2.mp3");
+        this.load.audio("", "./assets/sounds/hit3.mp3");
+        this.load.audio("", "./assets/sounds/hit4.mp3");
+        this.load.audio("", "./assets/sounds/laser-shot.mp3");
+        this.load.audio("", "./assets/sounds/pew.mp3");
+        this.load.audio("", "./assets/sounds/ping-sfx.mp3");
+        this.load.audio("", "./assets/sounds/simple-impact.mp3");
+
         // button/ui sfx
         // player charging sfx
         // player shoot sfx
