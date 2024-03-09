@@ -31,6 +31,10 @@ class BossFight extends Phaser.Scene {
         this.ground_T.tilePositionX += game.settings.scrollSpeed;
         this.craters.update();
 
+        // update state machines
+        this.rigbyFSM.step();
+        this.mordecaiFSM.step();
+
         if (Phaser.Input.Keyboard.JustDown(keyUp)) {
             console.log("here"); // IT WORKS
         }

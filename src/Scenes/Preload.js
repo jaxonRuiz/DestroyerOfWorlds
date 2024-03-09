@@ -92,12 +92,12 @@ class Preload extends Phaser.Scene {
         keyJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
 
         // player animations        
-        this.anims.create({
-            key: `rigby-sample`,
-            repeat: -1,
-            frames: this.anims.generateFrameNumbers('rigby_S', {start: 0, end: 5}),
-            frameRate: 15,
-        })
+        // this.anims.create({
+        //     key: `rigby-sample`,
+        //     repeat: -1,
+        //     frames: this.anims.generateFrameNumbers('rigby_S', {start: 0, end: 5}),
+        //     frameRate: 15,
+        // })
 
         this.scene.launch('menuScene'); // it works i think :D
     }
