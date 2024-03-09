@@ -31,6 +31,10 @@ class Player {
                 this.mordecai.y += y;
                 this.hitbox.y += y
             },
+            setDirection: (x, y) => {
+                this.player.setX(x);
+                this.player.setY(y);
+            },
             getX: () => {
                 return this.hitbox.x;
             },
@@ -102,16 +106,23 @@ class M_RunState extends State {
         }
 
         // general movement
-        if(keyP1W.isDown) {
-            player.setY(-game.settings.playerMoveSpeed);
-        } else if(keyP1A.isDown) {
-            player.setX(-game.settings.playerMoveSpeed/2);
-        } else if(keyP1S.isDown) {
-            player.setY(game.settings.playerMoveSpeed);
-        } else if(keyP1D.isDown) {
-            player.setX(game.settings.playerMoveSpeed);
+        let move = new Phaser.Math.Vector2(0, 0);
+        if(keyP1W.isDown && player.getY() > (game.config.height - game.settings.runPathHeight) + 30) {
+            move.y = -game.settings.playerMoveSpeed;
+        } 
+        if(keyP1A.isDown && player.getX() > 30) {
+            move.x = -game.settings.playerMoveSpeed/2;
         }
+        if(keyP1S.isDown && player.getY() < game.config.height-30) {
+            move.y = game.settings.playerMoveSpeed;
+        }
+        if(keyP1D.isDown && player.getX() < game.config.width-350) {
+            move.x = game.settings.playerMoveSpeed;
+        }
+        move.normalize();
+        player.setDirection(move.x * game.settings.playerMoveSpeed, move.y * game.settings.playerMoveSpeed);
 
+        // autoscroll
         if (player.getX() > 30) {
             player.setX(-game.settings.scrollSpeed);
         }
