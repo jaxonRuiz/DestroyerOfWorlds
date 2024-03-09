@@ -14,6 +14,11 @@ class BossFight extends Phaser.Scene {
          *  -5 -> middle ground
          * -10 -> background
          */
+        // add music
+        this.music = this.sound.add("bg_music");
+        this.music.setLoop(true);
+        this.music.setVolume(0.4);
+        this.music.play();
 
         // create ground
         this.ground_T = this.add.tileSprite(-10, game.config.height, game.config.width+25, game.settings.runPathHeight, "ground_T")
@@ -41,7 +46,6 @@ class BossFight extends Phaser.Scene {
         this.mordecaiFSM.step();
 
         if (Phaser.Input.Keyboard.JustDown(keyP1A)) {
-            console.log("here"); // IT WORKS
         }
     }
 }

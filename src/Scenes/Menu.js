@@ -4,21 +4,29 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
-        // test
-        A =this.add.text(game.config.width/3, game.config.height/3, "(temporary) menu scene");
-        B = this.add.text(game.config.width/2, game.config.height/2, "Enter to start | Shift for credits");
-        A.setFont(50);
-        B.setFont(25);
+        let menuConfig = {
+            fontFamily: 'Comic Sans',
+            fontSize: "52px",
+            backgroundColor: "#AB8888",
+            align: "center"
+        }
+        // add sfx
+        this.click = this.sound.add("pewSFX");
+
+        // add text
+        this.add.text(game.config.width/3, game.config.height/3, "(temporary) menu scene", menuConfig);
+        menuConfig.fontSize = "30px";
+        this.add.text(game.config.width/2, game.config.height/2, "Enter to start | Shift for credits", menuConfig);
     }
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
-            console.log("enter"); // IT WORKS
+            this.click.play();
             this.scene.start("bossfightScene");
         }
-        if (Phaser.Input.Keyboard.JustDown(keyShift)) {
-            console.log("enter"); // IT WORKS
-            this.scene.start("bossfightScene");
+        if (Phaser.Input.Keyboard.JustDown(keyP1S2)) {
+            this.click.play();
+            this.scene.start("creditsScene");
         }
     }
 }
