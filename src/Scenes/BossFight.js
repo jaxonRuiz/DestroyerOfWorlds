@@ -20,12 +20,11 @@ class BossFight extends Phaser.Scene {
             .setOrigin(0, 1)
             .setDepth(-5);
 
-        // update to player objects later
-        this.rigby_P = this.add.sprite(game.config.width/2, game.config.width/2, "rigby_S")
-            .setOrigin(0.5);
+        // player object
+        this.player = new Player(this);
 
         // create player
-        this.craters = new CraterGroup(this, [this.rigby_P], 5);
+        this.craters = new CraterGroup(this, [this.player], 5);
 
         // create Destroyer (within comments i *will* be insisting on capitalization for the Destroyer of Worlds)
         this.destroyer = new Destroyer(this, game.config.width * 7/8, 0, "destroyer_S", 0).setOrigin(0.5, 0).setDepth(0);
@@ -37,8 +36,9 @@ class BossFight extends Phaser.Scene {
         this.craters.update();
         this.destroyer.update();
 
-        // MOVE ANIMATIONS TO PLAYER.JS LATERRR
-        this.rigby_P.anims.play({ key: `rigby-sample` }, true);
+        // update state machines
+        this.rigbyFSM.step();
+        this.mordecaiFSM.step();
 
         if (Phaser.Input.Keyboard.JustDown(keyUp)) {
             console.log("here"); // IT WORKS

@@ -37,7 +37,6 @@ class Crater extends Phaser.GameObjects.Sprite {
     }
     offScreen() {
         if (this.x + this.width < 0) {
-            console.log('yes');
             return true;
         }
         return false;
@@ -62,7 +61,7 @@ class CraterGroup {
             repeat: num-1,
             callback: () => {
                 this.pool.push(new Crater(scene, collides));
-                console.log(this.pool);
+                // console.log(this.pool);
             },
             callbackScope: this,
         })
