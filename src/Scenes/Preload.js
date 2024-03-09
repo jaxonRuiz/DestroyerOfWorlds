@@ -8,25 +8,30 @@ class Preload extends Phaser.Scene {
     // loading all interscene assets here
     preload() {
         this.load.setPath('./assets/');
+        // empty sprite for physics bounding boxes (because i can't think of a better way to do it)
+        this.load.image("empty", "img/empty.png");
+
         // ------ (planned) visual assets ------
 
         // planned assets to load:
 // TODOOO CHANGE THE SPRITE SHEET PATH WHEN WE GET ACTUAL SPITESSS
         // player1 sprite+animations
-        this.load.spritesheet('rigby_S', 'img/sampleSprite.png', {
-            frameWidth: 50,
-            frameHeight: 35,
-            startFrame: 0,
-            endFrame: 7
-        });
+        this.load.image("rigby_S", "img/rigby.png");
+        // this.load.spritesheet('rigby_S', 'img/sampleSprite.png', {
+        //     frameWidth: 50,
+        //     frameHeight: 35,
+        //     startFrame: 0,
+        //     endFrame: 7
+        // });
 
         // player2 sprite+animations
-        this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
-            frameWidth: 50,
-            frameHeight: 35,
-            startFrame: 0,
-            endFrame: 7
-        });
+        this.load.image("mordecai_S", "img/mordecai.png");
+        // this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
+        //     frameWidth: 50,
+        //     frameHeight: 35,
+        //     startFrame: 0,
+        //     endFrame: 7
+        // });
             // shot projectile sprite(s)
         // destroyerofworlds sprite+animations
             // mouth laser attack sprite+animation
