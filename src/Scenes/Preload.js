@@ -59,32 +59,32 @@ class Preload extends Phaser.Scene {
 
         // background track (boss theme)
         this.load.audio("bg_music", "./assets/sounds/background-music.mp3");
-        this.load.audio("", "./assets/sounds/arcade-hit1.mp3");
-        this.load.audio("", "./assets/sounds/arcade-hit2.mp3");
-        this.load.audio("", "./assets/sounds/arcade-hit3.mp3");
-        this.load.audio("", "./assets/sounds/arcade-ascend-sfx.mp3");
-        this.load.audio("", "./assets/sounds/arcade-bleepNbloop.mp3");
-        this.load.audio("", "./assets/sounds/arcade-hurt-sfx.mp3");
-        this.load.audio("", "./assets/sounds/arcade-small-hit.mp3");
-        this.load.audio("", "./assets/sounds/arcade-success-sfx.mp3");
-        this.load.audio("", "./assets/sounds/charge-up.mp3");
-        this.load.audio("", "./assets/sounds/cheesy-win-sfx.mp3");
-        this.load.audio("", "./assets/sounds/collect-sfx1.mp3");
-        this.load.audio("", "./assets/sounds/collect-sfx2.mp3");
-        this.load.audio("", "./assets/sounds/defeat-boom.mp3");
-        this.load.audio("", "./assets/sounds/destroyer-laugh.mp3");
-        this.load.audio("", "./assets/sounds/game-over-sfx.mp3");
-        this.load.audio("", "./assets/sounds/heavy-laser-impact.mp3");
-        this.load.audio("", "./assets/sounds/heavy-laser-shot.mp3");
-        this.load.audio("", "./assets/sounds/heavyish-hit.mp3");
-        this.load.audio("", "./assets/sounds/hit1.mp3");
-        this.load.audio("", "./assets/sounds/hit2.mp3");
-        this.load.audio("", "./assets/sounds/hit3.mp3");
-        this.load.audio("", "./assets/sounds/hit4.mp3");
-        this.load.audio("", "./assets/sounds/laser-shot.mp3");
-        this.load.audio("", "./assets/sounds/pew.mp3");
-        this.load.audio("", "./assets/sounds/ping-sfx.mp3");
-        this.load.audio("", "./assets/sounds/simple-impact.mp3");
+        this.load.audio("destroyerHit1SFX", "./assets/sounds/arcade-hit1.mp3"); // as in the sound played when Destroyer gets hit
+        this.load.audio("destroyerHit2SFX", "./assets/sounds/arcade-hit2.mp3");
+        this.load.audio("destroyerHit3SFX", "./assets/sounds/arcade-hit3.mp3");
+        this.load.audio("ascendSFX", "./assets/sounds/arcade-ascend-sfx.mp3");
+        this.load.audio("destroyerHit4SFX", "./assets/sounds/arcade-hurt-sfx.mp3");
+        this.load.audio("bleep_n_bloopSFX", "./assets/sounds/arcade-bleepNbloop.mp3");
+        this.load.audio("destroyerSmallHitSFX", "./assets/sounds/arcade-small-hit.mp3");
+        this.load.audio("successSFX", "./assets/sounds/arcade-success-sfx.mp3");
+        this.load.audio("chargeUpSFX", "./assets/sounds/charge-up.mp3");
+        this.load.audio("victorySFX", "./assets/sounds/cheesy-win-sfx.mp3");
+        this.load.audio("collect1SFX", "./assets/sounds/collect-sfx1.mp3");
+        this.load.audio("collect2SFX", "./assets/sounds/collect-sfx2.mp3");
+        this.load.audio("destroyerDefeatSFX", "./assets/sounds/defeat-boom.mp3");
+        this.load.audio("destroyerLaughSFX", "./assets/sounds/destroyer-laugh.mp3");
+        this.load.audio("gameOverSFX", "./assets/sounds/game-over-sfx.mp3");
+        this.load.audio("heavyLaserImpactSFX", "./assets/sounds/heavy-laser-impact.mp3");
+        this.load.audio("heavyLaserShotSFX", "./assets/sounds/heavy-laser-shot.mp3");
+        this.load.audio("heavyishHitSFX", "./assets/sounds/heavyish-hit.mp3");
+        this.load.audio("hit1SFX", "./assets/sounds/hit1.mp3");
+        this.load.audio("hit2SFX", "./assets/sounds/hit2.mp3");
+        this.load.audio("hit3SFX", "./assets/sounds/hit3.mp3");
+        this.load.audio("hit4SFX", "./assets/sounds/hit4.mp3");
+        this.load.audio("laserShotSFX", "./assets/sounds/laser-shot.mp3");
+        this.load.audio("pewSFX", "./assets/sounds/pew.mp3");
+        this.load.audio("pingSFX", "./assets/sounds/ping-sfx.mp3");
+        this.load.audio("smallImpactSFX", "./assets/sounds/simple-impact.mp3");
 
         // button/ui sfx
         // player charging sfx

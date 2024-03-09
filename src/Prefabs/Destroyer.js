@@ -41,6 +41,11 @@ class Destroyer extends Phaser.GameObjects.Sprite {
 
     }
 
+    // when Destroyer is (er) ..destroyed
+    die() {
+        
+    }
+
     hover() {
         console.log(this.percentHeight());
         if (this.goingUp) {
