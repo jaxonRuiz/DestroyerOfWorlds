@@ -29,8 +29,16 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.hover();
     }
 
-    hit() {
+    getHit() {
 
+    }
+
+    shootEyeLasers(x, y) {
+
+    }
+
+    shootMouthLaser(x, y) {
+        
     }
 
     hover() {
@@ -52,6 +60,8 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // come back to :( not working  and ran out of time
     percentHeight() {
         let range = this.minHeight - this.maxHeight;
+        let adjustedY = this.y - this.maxHeight;
+          adjustedY / range;
         if (!this.goingUp) {
             let adjustedY = this.y - this.maxHeight;
             return adjustedY / range;
@@ -65,7 +75,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // returns a smoothened value based on float 
     lerp(value, progress) {
         return value;
-        let x = progress * Math.PI/2;
+        let x = progress * Math.PI;
         return value * Math.sin(x);
     }
 }
