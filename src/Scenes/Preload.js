@@ -7,8 +7,10 @@ class Preload extends Phaser.Scene {
 
     // loading all interscene assets here
     preload() {
+        console.log("start Preload Scene preload()");
         this.load.setPath('./assets/');
         // ------ (planned) visual assets ------
+        // (todo remove 'planned' later lol)
 
         // planned assets to load:
 // TODOOO CHANGE THE SPRITE SHEET PATH WHEN WE GET ACTUAL SPITESSS
@@ -24,6 +26,13 @@ class Preload extends Phaser.Scene {
         this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
             frameWidth: 50,
             frameHeight: 35,
+            startFrame: 0,
+            endFrame: 7
+        });
+
+        this.load.spritesheet("destroyer_S", "img/destroyerSpritesheet.png", {
+            frameWidth: 312,
+            frameHeight: 552,
             startFrame: 0,
             endFrame: 7
         });
@@ -57,18 +66,23 @@ class Preload extends Phaser.Scene {
         // destroyer eye laser sfx(s)
         // destroyer idle/random/ambient sfx(s)
 
+        console.log("finished Preload Scene preload()");
     }
 
     init() {
+        console.log("start Preload Scene init()");
         // set universal game settings
         game.settings = {
             scrollSpeed : 4, // in pixels
             runPathHeight: 400, // strip of land to run on, in pixels
             craterSpawnSpeed: 1, // in seconds
         }
+        console.log("finished Preload Scene init()");
+
     }
 
     create() {
+        console.log("start Preload Scene create()");
 //let keyEnter, keyEsc, keyW, keyA, keyS, keyD, keySpace, keyShift, keyUp, keyLeft, keyRight, keyDown, keyDot, keyComma;
         // keys
         keyEnter = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
@@ -93,6 +107,8 @@ class Preload extends Phaser.Scene {
             frames: this.anims.generateFrameNumbers('rigby_S', {start: 0, end: 5}),
             frameRate: 15,
         })
+        console.log("finished Preload Scene create()");
+        console.log("launching menu scene now...");
 
         this.scene.launch('menuScene'); // it works i think :D
     }
