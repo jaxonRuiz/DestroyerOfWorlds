@@ -29,23 +29,37 @@ class BossFight extends Phaser.Scene {
         this.player = new Player(this);
 
         // create player
-        this.craters = new CraterGroup(this, [this.player], 5);
+        this.craters = new CraterGroup(this, [{object: this.player, hitbox: this.player.hitbox}], 5);
 
         // create Destroyer (within comments i *will* be insisting on capitalization for the Destroyer of Worlds)
         this.destroyer = new Destroyer(this, game.config.width * 7/8, 0, "destroyer_S", 0).setOrigin(0.5, 0).setDepth(0);
+
+        // dirties
+        this.isPlaying = true;
     }
 
     update() {
-        // updating background
-        this.ground_T.tilePositionX += game.settings.scrollSpeed;
-        this.craters.update();
-        this.destroyer.update();
+        if (this.isPlaying) {
+            // updating background
+            this.ground_T.tilePositionX += game.settings.scrollSpeed;
+            this.craters.update();
+            this.destroyer.update();
 
-        // update state machines
-        this.rigbyFSM.step();
-        this.mordecaiFSM.step();
+            // update state machines
+            this.rigbyFSM.step();
+            this.mordecaiFSM.step();
 
-        if (Phaser.Input.Keyboard.JustDown(keyP1A)) {
+            if (Phaser.Input.Keyboard.JustDown(keyP1A)) {
+            }
         }
+    }
+
+    gameOver() {
+        this.isPlaying = false;
+        this.scene.start('gameoverScene');
+    }
+
+    restart() {
+        // reset variables maybe
     }
 }

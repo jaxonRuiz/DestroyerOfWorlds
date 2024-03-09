@@ -53,6 +53,9 @@ class Player {
             run: new M_RunState(),
             dash: new M_DashState(),
         }, [scene, this.player]);
+
+        // save for other functions
+        this.scene = scene;
     }
 
     update() {
@@ -63,6 +66,7 @@ class Player {
     // hitting crater
     hit() {
         console.log('hitcrater');
+        this.scene.gameOver();
     }
 }
 

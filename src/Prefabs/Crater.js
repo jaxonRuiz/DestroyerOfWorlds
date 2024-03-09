@@ -6,7 +6,7 @@ class Crater extends Phaser.GameObjects.Sprite {
      */
     constructor(scene, collides) {
         const x = game.config.width + 50; // a bit of padding
-        const y = game.config.height - (Math.random() * (game.settings.runPathHeight-20));
+        const y = game.config.height - (Math.random() * (game.settings.runPathHeight-30));
         super(scene, x, y, 'crater_S');
 
         this.x = x;
@@ -20,8 +20,8 @@ class Crater extends Phaser.GameObjects.Sprite {
         this.setDepth(-5);
 
         // set up collisions
-        for (const object of collides) {
-            scene.physics.add.collider(object, this, object.hit);
+        for (const {object, hitbox} of collides) {
+            scene.physics.add.collider(hitbox, this, object.hit, null, object);
         }
     }
 
@@ -35,7 +35,7 @@ class Crater extends Phaser.GameObjects.Sprite {
     // for object pooling
     refactor() {
         this.x = game.config.width + this.width + Math.floor(Math.random() * 15)-5;
-        this.y = game.config.height - (Math.random() * (game.settings.runPathHeight-this.height) + this.height);
+        this.y = game.config.height - (Math.random() * (game.settings.runPathHeight-30));
     }
     offScreen() {
         if (this.x + this.width < 0) {
