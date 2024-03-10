@@ -64,7 +64,7 @@ class BossFight extends Phaser.Scene {
                 console.log("attempting generateEyeLaser()");
                 //this.destroyer.generateEyeLaser(this.player.hitbox);
                 this.destroyer.activateMouthLaser(this.player.hitbox);
-                this.destroyer.shootMouthLaser(this.player.hitbox);
+                // this.destroyer.shootMouthLaser(this.player.hitbox);
             }
         }
     }

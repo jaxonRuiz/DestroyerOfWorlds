@@ -22,6 +22,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.currentHealth = 100;
         this.maxHealth = 100;
 
+        // set up eye laser attacks
         this.eyeLaserPool = [];
 
         this.mouthLaserActive = false
@@ -50,7 +51,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         }
 
         if (this.mouthLaserActive) {
-            this.mouthLaser.update
+            this.mouthLaser.update();
         }
     }
 
