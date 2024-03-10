@@ -17,6 +17,8 @@ class Player {
         this.hitbox.body.setSize(50, 20);
         this.hitbox.body.setOffset(-15, -10);
 
+        this.tracker = scene.add.sprite(this.x - 10, this.y, "ballProjectile").setOrigin(0.5);
+
         this.player = {
             rigby: this.rigby,
             mordecai: this.mordecai,
@@ -25,11 +27,13 @@ class Player {
                 this.rigby.x += x;
                 this.mordecai.x += x;
                 this.hitbox.x += x;
+                this.tracker.x += x;
             },
             setY: (y) => {
                 this.rigby.y += y;
                 this.mordecai.y += y;
-                this.hitbox.y += y
+                this.hitbox.y += y;
+                this.tracker.y += y;
             },
             setDirection: (x, y) => {
                 this.player.setX(x);

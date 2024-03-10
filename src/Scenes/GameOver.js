@@ -11,7 +11,7 @@ class GameOver extends Phaser.Scene {
             align: "center"
         }
 
-        this.add.text(game.config.width/3, game.config.height/3, "(temporary) credits scene", textConfig);
+        this.add.text(game.config.width/3, game.config.height/3, "game over", textConfig);
         textConfig.fontSize = "30px";
         this.add.text(game.config.width/2, game.config.height/2, "Enter to start | Esc for menu", textConfig);
     }

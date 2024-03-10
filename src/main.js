@@ -23,7 +23,7 @@ let config = {
     },
     pixelPerfect: true,
     pixelArt: true,
-    scene: [Preload, Menu, BossFight, GameOver, Credits],
+    scene: [Preload, Menu, BossFight, GameOver, Credits, Victory, Help],
     // future scenes (?): EnemyFight
 }
 let game = new Phaser.Game(config);

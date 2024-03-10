@@ -4,11 +4,30 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
+        
+
+        // health bar frame
+        scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBar").setOrigin(0.5,0.5);
+        this.healthBar = scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBarFill").setOrigin(0.5,0.5);
+        
+
+        // health bar fill
+        scene.add.rectangle
+
         scene.physics.add.existing(this);
         this.maxHeight = y - (game.config.height/14);
         this.minHeight = y + (game.config.height/6);
         this.goingUp = false;
         this.speed = 100;
+        this.currentHealth = 100;
+        this.maxHealth = 100;
+
+        // set up eye laser attacks
+        this.eyeLaserPool = [];
+
+        this.mouthLaserActive = false
+        this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
+        this.scene.add.existing(this.mouthLaser);
 
         // adding destroyer animations:
         this.anims.create({
@@ -27,23 +46,59 @@ class Destroyer extends Phaser.GameObjects.Sprite {
 
     update() {
         this.hover();
+        for (const eyeLaser of this.eyeLaserPool) {
+            eyeLaser.update();
+        }
+
+        if (this.mouthLaserActive) {
+            this.mouthLaser.update();
+        }
     }
 
-    getHit() {
+    // damage as an int
+    // returns
+    getHit(damage) {
+        this.currentHealth -= damage;
+        if (this.currentHealth <= 0) {
+            this.die();
+        }
 
+        // adjust hp bar
+        this.setHealthBar(this.currentHealth/this.maxHealth);
+    }
+
+    // maybe vary targetX and targetY a little?
+    generateEyeLaser(target) {
+        console.log("generateEyeLaser()");
+        let laser = new EyeLaser(this.scene, this.x, this.y, target);
+        this.scene.add.existing(laser);
     }
 
     shootEyeLasers(x, y) {
-
+        
     }
 
-    shootMouthLaser(x, y) {
+    activateMouthLaser(target) {
+        // maybe add warning animation?
 
+        this.mouthLaser.setSpawn(this);
+        this.mouthLaser.setTarget(target);
+        this.mouthLaserActive = true;
+    }
+
+    deactivateMouthLaser() {
+
+    }
+    shootMouthLaser(target) {
+        console.log("shootMouthLaser()");
+        this.mouthLaser.setTarget(target);
+        this.mouthLaser.setSpawn(this); // update later with more specific spawn point. TODO
+        this.mouthLaser.update();
     }
 
     // when Destroyer is (er) ..destroyed
     die() {
-        
+        console.log("destroyer has died");
     }
 
     hover() {
@@ -82,5 +137,10 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         return value;
         let x = progress * Math.PI;
         return value * Math.sin(x);
+    }
+
+    // 
+    setHealthBar(percent) {
+        this.healthBar.setCrop(0, 0, this.healthBar.width * percent, this.healthBar.height);
     }
 }
