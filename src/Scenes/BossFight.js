@@ -58,6 +58,14 @@ class BossFight extends Phaser.Scene {
 
             if (Phaser.Input.Keyboard.JustDown(keyP1A)) {
             }
+
+            // for testing
+            if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
+                console.log("attempting generateEyeLaser()");
+                //this.destroyer.generateEyeLaser(this.player.hitbox);
+                this.destroyer.activateMouthLaser(this.player.hitbox);
+                this.destroyer.shootMouthLaser(this.player.hitbox);
+            }
         }
     }
 

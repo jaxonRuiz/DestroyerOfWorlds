@@ -58,6 +58,11 @@ class Preload extends Phaser.Scene {
         // add health bar
         this.load.image('healthBar', 'img/healthBar.png');
         this.load.image("healthBarFill", "img/healthBarFill.png");
+
+        // add projectile sprites
+        this.load.image("ballProjectile", "img/ballProjectile.png");
+        this.load.image("mouthLaser", "img/mouthLaser.png");
+
         
         // ------ audio assets ------
 
@@ -89,6 +94,7 @@ class Preload extends Phaser.Scene {
         this.load.audio("pewSFX", "sounds/pew.mp3");
         this.load.audio("pingSFX", "sounds/ping-sfx.mp3");
         this.load.audio("smallImpactSFX", "sounds/simple-impact.mp3");
+        
 
         // button/ui sfx
         // player charging sfx
