@@ -54,6 +54,10 @@ class Preload extends Phaser.Scene {
         // platforms(?)
         // ground obstacals(?) holes and stuff?
         this.load.image('crater_S', 'img/crater.png');
+
+        // add health bar
+        this.load.image('healthBar', 'img/healthBar.png');
+        this.load.image("healthBarFill", "img/healthBarFill.png");
         
         // ------ audio assets ------
 
