@@ -19,7 +19,7 @@ class Player {
         this.hitbox.body.setSize(50, 20);
         this.hitbox.body.setOffset(-15, -10);
 
-        this.tracker = scene.add.sprite(this.x - 10, this.y, "ballProjectile").setOrigin(0.5);
+        this.tracker = scene.add.sprite(this.x - 10, this.y, "empty").setOrigin(0.5);
 
         //making launch point at rigby head (?)
         this.launchPoint = scene.add.sprite(this.rigby.x, this.rigby.y - this.rigby.height/3, "empty").setOrigin(0.5, 1);
@@ -201,7 +201,7 @@ class R_CooldownState extends State {
         this.chair.setAngle(this.chair.angle + 5);
 
         // reset when chair goes offscreen
-        if (this.chair.y > game.config.height*3/4 || this.chair.x > game.config.width) {
+        if (this.chair.y > game.config.height || this.chair.x > game.config.width) {
             this.chair.destroy();
             this.stateMachine.transition("idle");
         }

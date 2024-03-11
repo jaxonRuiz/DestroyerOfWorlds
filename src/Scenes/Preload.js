@@ -68,6 +68,9 @@ class Preload extends Phaser.Scene {
         // add player launcher parts
         this.load.image("aimArrow", "img/aimArrow.png");      
 
+        // add chair projectile
+        this.load.image("thrownChair", "img/chair.png");
+
         
         // ------ audio assets ------
 
