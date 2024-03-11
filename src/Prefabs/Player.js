@@ -141,7 +141,7 @@ class R_ShootState extends State {
         console.log("rigby shootin");
         // shoot animation
         
-        this.power = 0.50; // max 1, for 100%
+        this.power = 0; // max 1, for 100%
         // (maybe add button prompt for clarity)
 
         // making makeshift charge bar
@@ -159,10 +159,18 @@ class R_ShootState extends State {
         this.fillBar.setCrop(1, 0, this.fillBar.width * this.power, this.fillBar.height);
         
         if (keyP2W.isDown && this.power < 1) {
-            player.power += 0.01;
+            this.power += 0.01;
         }
         if (keyP2S.isDown && this.power > 0) {
-            player.power -= 0.01;
+            this.power -= 0.01;
+        }
+
+        if (Phaser.Input.Keyboard.JustDown(keyP2S2)) {
+            console.log("transition to cooldown");
+            player.power = this.power;
+            this.chargeBar.destroy();
+            this.fillBar.destroy();
+            this.stateMachine.transition("cooldown");
         }
     }
 }
@@ -172,18 +180,19 @@ class R_CooldownState extends State {
     enter(scene, player) {
         // fire chair
         this.chair = scene.add.sprite(player.launchPoint.x, player.launchPoint.y, "thrownChair");
-        scene.add.existing(chair);
-        let baseVelocity = 100;
+        scene.physics.add.existing(this.chair);
+        let baseVelocity = 1000;
         
         this.magnitude = baseVelocity * player.power;
-        this.componentX = Math.cos(player.theta) * this.magnitude;
-        this.componentY = Math.sin(player.theta) * this.magnitude;
+        let componentX = Math.cos(player.theta) * this.magnitude;
+        let componentY = Math.sin(player.theta) * this.magnitude;
         this.chair.body.setVelocity(componentX, componentY);
+        this.chair.body.setGravityY(1000);
         console.log("rigby fire");
     }
 
     execute(scene, player) {
-        // this.chair.setAngle(this.chair.angle() + 5);
+        this.chair.setAngle(this.chair.angle + 5);
 
     }
 }
