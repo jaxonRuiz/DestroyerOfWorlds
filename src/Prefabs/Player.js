@@ -13,9 +13,7 @@ class Player {
 
         // editing hitbox
         this.hitbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5);
-
-        //making launch point at rigby head (?)
-        this.launchPoint = scene.add.sprite(this.rigby.x, this.rigby.y - this.rigby.height/3, "empty").setOrigin(0.5, 1);
+        // this.hitbox2 = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5);
 
         // edit the bounding boxes later
         this.hitbox.body.setSize(50, 20);
@@ -23,8 +21,10 @@ class Player {
 
         this.tracker = scene.add.sprite(this.x - 10, this.y, "ballProjectile").setOrigin(0.5);
 
-        this.thrower = new Thrower(this.rigby);
+        //making launch point at rigby head (?)
+        this.launchPoint = scene.add.sprite(this.rigby.x, this.rigby.y - this.rigby.height/3, "empty").setOrigin(0.5, 1);
 
+        // internal player object 
         this.player = {
             rigby: this.rigby,
             launchPoint: this.launchPoint,

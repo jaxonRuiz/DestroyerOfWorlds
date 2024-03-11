@@ -9,12 +9,13 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         // health bar frame
         scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBar").setOrigin(0.5,0.5);
         this.healthBar = scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBarFill").setOrigin(0.5,0.5);
-        
 
         // health bar fill
         scene.add.rectangle
 
+        // Destroyer data
         scene.physics.add.existing(this);
+        this.body.setImmovable(true);
         this.maxHeight = y - (game.config.height/14);
         this.minHeight = y + (game.config.height/6);
         this.goingUp = false;
@@ -22,12 +23,14 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.currentHealth = 100;
         this.maxHealth = 100;
 
-        // set up eye laser attacks
-        this.eyeLaserPool = [];
+        // set up eye laser attacks better TODO
+        this.eyeLaserPool = new Set();
+        
 
         this.mouthLaserActive = false
-        this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
-        this.scene.add.existing(this.mouthLaser);
+        // UNFINISHED MOUTH LASER TODO
+        //this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
+        //this.scene.add.existing(this.mouthLaser);
 
         // adding destroyer animations:
         this.anims.create({
@@ -71,7 +74,9 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     generateEyeLaser(target) {
         console.log("generateEyeLaser()");
         let laser = new EyeLaser(this.scene, this.x, this.y, target);
+        this.eyeLaserPool.add(laser)
         this.scene.add.existing(laser);
+        // TODO pooling is not finished..
     }
 
     shootEyeLasers(x, y) {
@@ -99,7 +104,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // when Destroyer is (er) ..destroyed
     die() {
         console.log("destroyer has died");
-        
+        this.scene.victory();
     }
 
     hover() {

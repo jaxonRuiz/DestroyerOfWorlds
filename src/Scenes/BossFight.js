@@ -41,6 +41,18 @@ class BossFight extends Phaser.Scene {
         this.haha_funi = this.sound.add("destroyerLaughSFX");
         this.haha_funi.setVolume(1.4);
         this.haha_funi.play();
+
+        this.time.addEvent( {
+            delay: 1000, // time in ms
+            loop: true,
+            callback: () => {
+                
+                    
+                this.destroyer.generateEyeLaser(this.player.hitbox);
+                
+            },
+            callbackScope: this
+        })
     }
 
     update() {
@@ -72,6 +84,13 @@ class BossFight extends Phaser.Scene {
         this.music.pause();
         // maybe add a game over sound here!!
         this.scene.start('gameoverScene');
+    }
+
+    victory() {
+        this.isPlaying = false;
+        this.music.pause();
+        // maybe add a game over sound here!!
+        this.scene.start('victoryScreen'); // accidental inconsisten naming - oops
     }
 
     restart() {
