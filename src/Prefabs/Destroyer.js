@@ -75,6 +75,12 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         console.log("generateEyeLaser()");
         let laser = new EyeLaser(this.scene, this.x, this.y, target);
         this.eyeLaserPool.add(laser)
+
+        this.scene.physics.add.collider(laser, this.scene.player.hitbox, () => {
+            laser.destroy();
+            this.scene.player.hit()
+        })
+
         this.scene.add.existing(laser);
         // TODO pooling is not finished..
     }
