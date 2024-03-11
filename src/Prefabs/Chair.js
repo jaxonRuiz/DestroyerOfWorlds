@@ -8,7 +8,7 @@ class AmmoManager {
         // this.ammoHUD = scene.add.text(x, y, `ammo text: ${this.ammo}`);
         
         // "pools"
-        this.collectableChairs = [];
+        this.recycleChair = new chair
         
         // save for later
         this.scene = scene;
@@ -28,15 +28,13 @@ class AmmoManager {
 
     deleteChair(chair) { // we won't ever have too many chairs on the screen hopefully
         chair.destroy();
-        this.collectableChairs.splice(this.collectableChairs.indexOf(chair), 1);
+        //this.collectableChairs.splice(this.collectableChairs.indexOf(chair), 1);
     }
 
     update() {
         // spawn ammo every so often
         // update pools
-        for (const chair of this.collectableChairs) {
-            chair.update();
-        }
+        this.recycleChair.update();
     }
 }
 
@@ -64,9 +62,7 @@ class Chair extends Phaser.GameObjects.Sprite {
 
 // chairs to shoot
 class ChairBullet extends Phaser.GameObjects.Sprite {
-    constructor(player, enemies, manager) {
-        this.manager = manager; // object manager
-
+    constructor(player, enemies) {
         // dirties
         this.shot = false;
 
