@@ -4,18 +4,18 @@ class GameOver extends Phaser.Scene {
     }
 
     create() {
-         // add sfx
-         this.click = this.sound.add("pewSFX");
-         this.select = this.sound.add("pingSFX");
- 
-         // add text
-         this.add.bitmapText(game.config.width/2, 300, 'pixel_font', 'GAME OVER', '72').setOrigin(0.5);
-         this.buttons = [
-             new Button(this, game.config.width/2, 650, 'RESTART', keyEnter, this.startButton, this),
-             new Button(this, game.config.width/2, 750, 'MENU', keyEnter, this.menuButton, this),
-         ];
-         this.bIndex = 0;
-         this.buttons[this.bIndex].select();
+        // add sfx
+        this.click = this.sound.add("pewSFX");
+        this.select = this.sound.add("pingSFX");
+
+        // add text
+        this.add.bitmapText(game.config.width/2, 300, 'pixel_font', 'GAME OVER', '72').setOrigin(0.5);
+        this.buttons = [
+            new Button(this, game.config.width/2, 650, 'RESTART', keyEnter, this.startButton, this),
+            new Button(this, game.config.width/2, 750, 'MENU', keyEnter, this.menuButton, this),
+        ];
+        this.bIndex = 0;
+        this.buttons[this.bIndex].select();
     }
     // sounds from pixabay
     // music 
