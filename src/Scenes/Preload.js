@@ -11,6 +11,8 @@ class Preload extends Phaser.Scene {
         this.load.setPath('./assets/');
         // empty sprite for physics bounding boxes (because i can't think of a better way to do it)
         this.load.image("empty", "img/empty.png");
+        // font
+        this.load.bitmapFont('pixel_font', 'font/pixel_font32.png', 'font/pixel_font32.xml')
 
         // ------ (planned) visual assets ------
         // (todo remove 'planned' later lol)
@@ -92,7 +94,7 @@ class Preload extends Phaser.Scene {
         this.load.audio("hit4SFX", "sounds/hit4.mp3");
         this.load.audio("laserShotSFX", "sounds/laser-shot.mp3");
         this.load.audio("pewSFX", "sounds/pew.mp3");
-        this.load.audio("pingSFX", "sounds/ping-sfx.mp3");
+        this.load.audio("pingSFX", "sounds/ping-sfx-cropped.mp3");
         this.load.audio("smallImpactSFX", "sounds/simple-impact.mp3");
         
 

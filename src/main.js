@@ -5,6 +5,7 @@
  * Citations:
  *      https://github.com/nathanaltice/FSM/blob/master/src/prefabs/Hero.js
  *      https://stackoverflow.com/questions/58593047/callback-for-when-a-specific-animation-is-complete-in-phaser-3
+ *      https://www.dafont.com/arcadepix.font
  */
 
 let config = {

@@ -5,31 +5,22 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
-        let creditsConfig = {
-            fontFamily: 'Comic Sans',
-            fontSize: "52px",
-            backgroundColor: "#ABCDEF",
-            align: "center",
-            color: "black"
-        }
         // add sfx
         this.click = this.sound.add("pewSFX");
 
         // add text
-        this.add.text(game.config.width/3, game.config.height/3, "(temporary) credits scene", creditsConfig);
-        creditsConfig.fontSize = "30px";
-        this.add.text(game.config.width/2, game.config.height/2, "Enter to start | Esc for menu", creditsConfig);
+        this.add.bitmapText(game.config.width/2, 150, 'pixel_font', 'CREDITS', '72').setOrigin(0.5);
+        this.b = new Button(this, game.config.width/2, game.config.height-150, 'RETURN', keyEnter, this.returnButton, this);
+        this.b.select();
     }
     // sounds from pixabay
     // music 
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
-            this.click.play();
-            this.scene.start("bossfightScene");
-        }
-        if (Phaser.Input.Keyboard.JustDown(keyEsc)) {
-            this.click.play();
-            this.scene.start("menuScene");
-        }
+        this.b.update();
+    }
+    
+    returnButton() {
+        this.click.play();
+        this.scene.start("menuScene");
     }
 }

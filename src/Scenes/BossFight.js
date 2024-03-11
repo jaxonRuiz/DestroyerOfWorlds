@@ -20,8 +20,6 @@ class BossFight extends Phaser.Scene {
         this.music.setVolume(0.4);
         this.music.play();
 
-        
-
         // create ground
         this.ground_T = this.add.tileSprite(-10, game.config.height, game.config.width+25, game.settings.runPathHeight, "ground_T")
             .setOrigin(0, 1)
@@ -71,6 +69,8 @@ class BossFight extends Phaser.Scene {
 
     gameOver() {
         this.isPlaying = false;
+        this.music.pause();
+        // maybe add a game over sound here!!
         this.scene.start('gameoverScene');
     }
 
