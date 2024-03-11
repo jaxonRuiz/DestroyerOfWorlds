@@ -29,12 +29,12 @@ class MouthLaser extends Phaser.GameObjects.TileSprite {
         this.y = this.spawn.y;
         let targetX = this.target.x - (this.target.body.velocity.x * 8);
         let targetY = this.target.y - (this.target.body.velocity.y * 4);
-        // constructing math-y thingy
+        
+        // constructing math-y thingy (see jaxon's manic scribbles for details)
         let legA = targetX - this.spawn.x;
         let legB = targetY - this.spawn.y;
         this.lineLength = Math.sqrt(Math.pow(legA, 2) + Math.pow(legB, 2));
         let theta = Math.atan(legB / legA);
-        console.log(theta);
         this.width = this.lineLength;
         this.setRotation(theta);
 
