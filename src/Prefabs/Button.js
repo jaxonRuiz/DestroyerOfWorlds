@@ -63,4 +63,12 @@ class Button {
             }
         }
     }
+
+    tint(hex) {
+        // tint only works on webGL!!
+        this.self.setTintFill(hex);
+        for (const tringle of this.triangles) {
+            tringle.setTintFill(hex);
+        }
+    }
 }
