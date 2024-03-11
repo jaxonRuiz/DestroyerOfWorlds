@@ -68,6 +68,9 @@ class Preload extends Phaser.Scene {
         // add player launcher parts
         this.load.image("aimArrow", "img/aimArrow.png");      
 
+        // add chair projectile
+        this.load.image("thrownChair", "img/chair.png");
+
         
         // ------ audio assets ------
 
@@ -121,7 +124,7 @@ class Preload extends Phaser.Scene {
         console.log("start Preload Scene init()");
         // set universal game settings
         game.settings = {
-            scrollSpeed : 4, // in pixels
+            scrollSpeed : 3.5, // in pixels
             runPathHeight : 400, // strip of land to run on, in pixels
             craterSpawnSpeed : 1.35, // in seconds
             playerMoveSpeed : 5, // in pixels
