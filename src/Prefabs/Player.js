@@ -188,12 +188,23 @@ class R_CooldownState extends State {
         let componentY = Math.sin(player.theta) * this.magnitude;
         this.chair.body.setVelocity(componentX, componentY);
         this.chair.body.setGravityY(1000);
-        console.log("rigby fire");
+
+        // setting collision
+        scene.physics.add.collider(scene.destroyer, this.chair, () => {
+            scene.destroyer.getHit(10);
+            this.chair.destroy();
+            this.stateMachine.transition("idle");
+        })
     }
 
     execute(scene, player) {
         this.chair.setAngle(this.chair.angle + 5);
 
+        // reset when chair goes offscreen
+        if (this.chair.y > game.config.height*3/4 || this.chair.x > game.config.width) {
+            this.chair.destroy();
+            this.stateMachine.transition("idle");
+        }
     }
 }
 

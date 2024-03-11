@@ -59,9 +59,9 @@ class BossFight extends Phaser.Scene {
 
             // for testing
             if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
-                console.log("attempting generateEyeLaser()");
+                console.log("attempting testing");
                 //this.destroyer.generateEyeLaser(this.player.hitbox);
-                this.destroyer.activateMouthLaser(this.player.hitbox);
+                //this.destroyer.activateMouthLaser(this.player.hitbox);
                 // this.destroyer.shootMouthLaser(this.player.hitbox);
             }
         }
@@ -76,5 +76,7 @@ class BossFight extends Phaser.Scene {
 
     restart() {
         // reset variables maybe
+        this.isPlaying = true;
+        this.music.play();
     }
 }

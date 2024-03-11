@@ -99,6 +99,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // when Destroyer is (er) ..destroyed
     die() {
         console.log("destroyer has died");
+        
     }
 
     hover() {
