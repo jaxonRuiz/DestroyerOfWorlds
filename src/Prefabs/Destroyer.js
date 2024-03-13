@@ -5,13 +5,24 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         
+        // hit sounds 
+        this.hitSounds = [scene.sound.add("destroyerHit1SFX"), scene.sound.add("destroyerHit2SFX"), scene.sound.add("destroyerHit3SFX"), scene.sound.add("destroyerHit4SFX")];
+        this.hitSounds[1].setVolume(1.2);
+        this.hitSounds[3].setVolume(1.2);
+
+        // defeat sound
+        this.deathSFX = scene.sound.add("destroyerDefeatSFX");
+
+        // laser sound
+        this.laserShotSFX = scene.sound.add("laserShotSFX").setVolume(0.4);
+
 
         // health bar frame
         scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBar").setOrigin(0.5,0.5);
         this.healthBar = scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBarFill").setOrigin(0.5,0.5);
 
         // health bar fill
-        scene.add.rectangle
+        // scene.add.rectangle
 
         // Destroyer data
         scene.physics.add.existing(this);
@@ -27,10 +38,11 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.eyeLaserPool = new Set();
         
 
+
         this.mouthLaserActive = false
         // UNFINISHED MOUTH LASER TODO
-        //this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
-        //this.scene.add.existing(this.mouthLaser);
+        this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
+        this.scene.add.existing(this.mouthLaser);
 
         // adding destroyer animations:
         this.anims.create({
@@ -62,23 +74,26 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // returns
     getHit(damage) {
         this.currentHealth -= damage;
+        
         if (this.currentHealth <= 0) {
             this.die();
         }
-
+        let sfx = this.hitSounds[Math.floor(Math.random()*this.hitSounds.length)]
+        sfx.play();
         // adjust hp bar
         this.setHealthBar(this.currentHealth/this.maxHealth);
     }
 
     // maybe vary targetX and targetY a little?
     generateEyeLaser(target) {
-        console.log("generateEyeLaser()");
         let laser = new EyeLaser(this.scene, this.x, this.y, target);
         this.eyeLaserPool.add(laser)
-
+        this.laserShotSFX.play();
+        
         this.scene.physics.add.collider(laser, this.scene.player.hitbox, () => {
             laser.destroy();
-            this.scene.player.hit()
+            console.log("laser hit");
+            this.scene.player.hit(10)
         })
 
         this.scene.add.existing(laser);
@@ -89,12 +104,12 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         
     }
 
-    activateMouthLaser(target) {
+    toggleMouthLaser(target) {
         // maybe add warning animation?
 
         this.mouthLaser.setSpawn(this);
         this.mouthLaser.setTarget(target);
-        this.mouthLaserActive = true;
+        this.mouthLaserActive = !this.mouthLaserActive;
     }
 
     deactivateMouthLaser() {
@@ -110,6 +125,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // when Destroyer is (er) ..destroyed
     die() {
         console.log("destroyer has died");
+        this.deathSFX.play();
         this.scene.victory();
     }
 

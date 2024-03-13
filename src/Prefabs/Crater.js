@@ -19,9 +19,17 @@ class Crater extends Phaser.GameObjects.Sprite {
         this.setScale(0.75);
         this.setDepth(-5);
 
+        this.hitDummy = true;
+
         // set up collisions
         for (const {object, hitbox} of collides) {
-            scene.physics.add.collider(hitbox, this, object.hit, null, object);
+            scene.physics.add.collider(hitbox, this, () => { 
+                if (this.hitDummy) {
+                    object.hit(7);
+                    console.log("hit crater");
+                    this.hitDummy = false;
+                }
+                }, null, object);
         }
     }
 
@@ -36,6 +44,7 @@ class Crater extends Phaser.GameObjects.Sprite {
     refactor() {
         this.x = game.config.width + this.width + Math.floor(Math.random() * 15)-5;
         this.y = game.config.height - (Math.random() * (game.settings.runPathHeight-30));
+        this.hitDummy = true;
     }
     offScreen() {
         if (this.x + this.width < 0) {

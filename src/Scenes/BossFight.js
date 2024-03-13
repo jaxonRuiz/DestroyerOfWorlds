@@ -37,10 +37,17 @@ class BossFight extends Phaser.Scene {
         // dirties
         this.isPlaying = true;
 
+            // sounds
         // adding intro laugh
         this.haha_funi = this.sound.add("destroyerLaughSFX");
         this.haha_funi.setVolume(1.4);
         this.haha_funi.play();
+
+        // victory SFX
+        this.victorySFX = this.sound.add("victorySFX");
+
+        // game over SFX
+        this.gameOverSFX = this.sound.add("gameOverSFX");
 
         this.time.addEvent( {
             delay: 1000, // time in ms
@@ -53,6 +60,9 @@ class BossFight extends Phaser.Scene {
             },
             callbackScope: this
         })
+
+        // debug key
+        this.keyDebug = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P); 
     }
 
     update() {
@@ -69,11 +79,10 @@ class BossFight extends Phaser.Scene {
             if (Phaser.Input.Keyboard.JustDown(keyP1A)) {
             }
 
-            // for testing
-            if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
-                console.log("attempting testing");
+            // for testing ONLY
+            if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
                 //this.destroyer.generateEyeLaser(this.player.hitbox);
-                //this.destroyer.activateMouthLaser(this.player.hitbox);
+                this.destroyer.toggleMouthLaser(this.player.hitbox);
                 // this.destroyer.shootMouthLaser(this.player.hitbox);
             }
         }
@@ -82,6 +91,7 @@ class BossFight extends Phaser.Scene {
     gameOver() {
         this.isPlaying = false;
         this.music.pause();
+        this.gameOverSFX.play();
         // maybe add a game over sound here!!
         this.scene.start('gameoverScene');
     }
@@ -89,6 +99,7 @@ class BossFight extends Phaser.Scene {
     victory() {
         this.isPlaying = false;
         this.music.pause();
+        this.victorySFX.play();
         // maybe add a game over sound here!!
         this.scene.start('victoryScreen'); // accidental inconsisten naming - oops
     }

@@ -79,8 +79,8 @@ class Preload extends Phaser.Scene {
         this.load.audio("destroyerHit1SFX", "sounds/arcade-hit1.mp3"); // as in the sound played when Destroyer gets hit
         this.load.audio("destroyerHit2SFX", "sounds/arcade-hit2.mp3");
         this.load.audio("destroyerHit3SFX", "sounds/arcade-hit3.mp3");
-        this.load.audio("ascendSFX", "sounds/arcade-ascend-sfx.mp3");
         this.load.audio("destroyerHit4SFX", "sounds/arcade-hurt-sfx.mp3");
+        this.load.audio("ascendSFX", "sounds/arcade-ascend-sfx.mp3");
         this.load.audio("bleep_n_bloopSFX", "sounds/arcade-bleepNbloop.mp3");
         this.load.audio("destroyerSmallHitSFX", "sounds/arcade-small-hit.mp3");
         this.load.audio("successSFX", "sounds/arcade-success-sfx.mp3");

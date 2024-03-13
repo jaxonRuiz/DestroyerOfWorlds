@@ -13,16 +13,25 @@ class Player {
 
         // editing hitbox
         this.hitbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5);
+        this.hitbox.body.setImmovable(true);
         // this.hitbox2 = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5);
 
         // edit the bounding boxes later
         this.hitbox.body.setSize(50, 20);
         this.hitbox.body.setOffset(-15, -10);
 
+        // TODO later
         this.tracker = scene.add.sprite(this.x - 10, this.y, "empty").setOrigin(0.5);
+
+
+        // sounds
+        this.hitSounds = [scene.sound.add("hit1SFX"), scene.sound.add("hit2SFX"), scene.sound.add("hit3SFX"), scene.sound.add("hit4SFX")];
+
 
         //making launch point at rigby head (?)
         this.launchPoint = scene.add.sprite(this.rigby.x, this.rigby.y - this.rigby.height/3, "empty").setOrigin(0.5, 1);
+        this.health = 100;
+        this.maxHealth = 100;
 
         // internal player object 
         this.player = {
@@ -81,9 +90,14 @@ class Player {
     }
 
     // hitting crater
-    hit() {
-        console.log('hitcrater');
-        this.scene.gameOver();
+    hit(damage = 10) {
+        this.health -= damage;
+        console.log(this.health);
+        let sfx = this.hitSounds[Math.floor(Math.random()*this.hitSounds.length)]
+        sfx.play();
+        if (this.health <= 0) {
+            this.scene.gameOver();
+        }
     }
 }
 
