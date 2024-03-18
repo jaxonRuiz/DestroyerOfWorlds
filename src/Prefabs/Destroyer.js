@@ -17,12 +17,9 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.laserShotSFX = scene.sound.add("laserShotSFX").setVolume(0.4);
 
 
-        // health bar frame
+        // add health bar frame and fill
         scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBar").setOrigin(0.5,0.5);
         this.healthBar = scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBarFill").setOrigin(0.5,0.5);
-
-        // health bar fill
-        // scene.add.rectangle
 
         // Destroyer data
         scene.physics.add.existing(this);
@@ -63,6 +60,11 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.hover();
         for (const eyeLaser of this.eyeLaserPool) {
             eyeLaser.update();
+            if (eyeLaser.isOOB()) {
+                console.log("laser oob");
+                this.eyeLaserPool.delete(eyeLaser);
+                eyeLaser.destroy();
+            }
         }
 
         if (this.mouthLaserActive) {
@@ -92,6 +94,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         
         this.scene.physics.add.collider(laser, this.scene.player.hitbox, () => {
             laser.destroy();
+            this.eyeLaserPool.delete(laser);
             console.log("laser hit");
             this.scene.player.hit(10)
         })
@@ -129,6 +132,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.scene.victory();
     }
 
+    // TODO return to make *in game* animation so that hitbox more accurate.
     hover() {
         // console.log(this.percentHeight());
         if (this.goingUp) {

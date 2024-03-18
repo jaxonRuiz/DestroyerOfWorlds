@@ -1,11 +1,31 @@
 /**
  * Jaxon Ruiz & Lyssa Li
  * Project Name: Destroyer of Worlds: Arcade Edition
- * Project Hours: approx 500
+ * Project Hours:
  * Citations:
  *      https://github.com/nathanaltice/FSM/blob/master/src/prefabs/Hero.js
  *      https://stackoverflow.com/questions/58593047/callback-for-when-a-specific-animation-is-complete-in-phaser-3
  *      https://www.dafont.com/arcadepix.font
+ * 
+ * Technical Execution Components:
+ * (wasn't quite sure what exactly counted)
+ *      Physics systems (various uses, including gravity on chair projectiles and collisions)
+ *      Vectors (used for normalizing player movement and calculating projectile behaviors)
+ *      Collision systems (player hitbox, projectiles, boss hitbox)
+ *      Animation Manager
+ *      Buttons
+ *      Timers (used for button blinking)
+ *      (probably other ones too but im not sure what exactly counts and dont wanna pad too much lol)
+ *      
+ * Current todos:
+ *      *** finish player sprite
+ *      add destroyer animations
+ *      add preset destroyer attacks
+ *      add in game destroyer movement (fix hitbox)
+ *      finish mouth laser attack (?)
+ *      *** add help screen
+ *      (MAYBE) clean up player code and change some buttons around...
+ *      * change crater sprite
  */
 
 let config = {

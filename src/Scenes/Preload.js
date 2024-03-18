@@ -52,6 +52,7 @@ class Preload extends Phaser.Scene {
         // background image 
             // split into layers for parralax probably?
             // foreground elements?
+            
         // extra 'juice' effects and stuff? might conflict with 'arcade' style but might be cooler?
         // platforms(?)
         // ground obstacals(?) holes and stuff?
