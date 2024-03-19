@@ -17,6 +17,11 @@ class Menu extends Phaser.Scene {
         ];
         this.bIndex = 0;
         this.buttons[this.bIndex].select();
+
+        // grader mode
+        this.grader = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P); 
+        this.graderText = this.add.bitmapText(game.config.width/2, 375, 'pixel_font', 'GRADER MODE', '32');
+        this.graderText.setOrigin(0.5);
     }
 
     update() {
@@ -37,6 +42,16 @@ class Menu extends Phaser.Scene {
                 this.buttons[this.bIndex++].deselect();
                 this.buttons[this.bIndex].select();
             }
+        }
+
+        // grader mode
+        if (Phaser.Input.Keyboard.JustDown(this.grader)) {
+            game.settings.graderMode = !game.settings.graderMode;
+        }
+        if (game.settings.graderMode) {
+            this.graderText.setAlpha(1);
+        } else {
+            this.graderText.setAlpha(0);
         }
     }
 

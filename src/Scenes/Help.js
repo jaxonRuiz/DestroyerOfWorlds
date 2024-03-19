@@ -17,7 +17,7 @@ class Help extends Phaser.Scene {
         this.buttons.prev.disable();
         this.lastSelect = 'next'; // just for good feels
         this.page = 0;
-        this.totalPages = 2; // remember to change this manually!!
+        this.totalPages = 3; // remember to change this manually!!
         this.pages = this.add.tileSprite(0, game.config.height/2-30, game.config.width, 500, 'helpScreen')
             .setOrigin(0, 0.5);
     }

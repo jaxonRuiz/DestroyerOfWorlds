@@ -258,10 +258,11 @@ class M_RunState extends State {
         // run animation
     }
     execute(scene, player) {
-        if(Phaser.Input.Keyboard.JustDown(keyP1S2)) {
-            this.stateMachine.transition('dash')
-            return;
-        }
+        // TODO implement dash state if time
+        // if(Phaser.Input.Keyboard.JustDown(keyP1S2)) {
+        //     this.stateMachine.transition('dash')
+        //     return;
+        // }
 
         // general movement
         let move = new Phaser.Math.Vector2(0, 0);

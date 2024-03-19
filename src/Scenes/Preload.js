@@ -154,6 +154,7 @@ class Preload extends Phaser.Scene {
             runPathHeight : 400, // strip of land to run on, in pixels
             craterSpawnSpeed : 1.35, // in seconds
             playerMoveSpeed : 5, // in pixels
+            graderMode : false, // toggle with "P" in menu
         }
         console.log("finished Preload Scene init()");
 

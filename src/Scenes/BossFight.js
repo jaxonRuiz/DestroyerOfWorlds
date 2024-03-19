@@ -75,8 +75,12 @@ class BossFight extends Phaser.Scene {
             callbackScope: this
         })
 
-        // debug key
+        // debug key (currently disabled)
         this.keyDebug = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P); 
+
+        if (game.settings.graderMode) {
+            this.enableGraderMode();
+        }
     }
 
     update() {
@@ -97,13 +101,16 @@ class BossFight extends Phaser.Scene {
             this.rigbyFSM.step();
             this.mordecaiFSM.step();
 
+            // update time for deltatime
+            this.player.time = new Date();
+
             // debug button for testing
-            if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
-                //this.enableGraderMode();
+            // if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
+            //     //this.enableGraderMode();
                 
-                this.destroyer.toggleMouthLaser(this.player.groundbox);
-                // this.destroyer.shootMouthLaser(this.player.hitbox);
-            }
+            //     this.destroyer.toggleMouthLaser(this.player.groundbox);
+            //     // this.destroyer.shootMouthLaser(this.player.hitbox);
+            // }
         }
     }
 
