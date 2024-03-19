@@ -4,21 +4,22 @@ class Player {
     constructor(scene) {
         this.x = 150;
         this.y = game.config.width/2;
-        this.rigby = scene.add.sprite(this.x, this.y-125, "rigby_S")
+        this.rigby = scene.add.sprite(this.x, this.y-150, "rigby_S")
             .setOrigin(0.5, 1)
             .setScale(0.35);
         this.mordecai = scene.add.sprite(this.x, this.y, "mordecai_S")
             .setOrigin(0.5, 1)
             .setScale(0.35);
 
-        // editing hitbox
-        this.hitbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5);
-        this.hitbox.body.setImmovable(true);
-        // this.hitbox2 = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5);
+        // hitboxes
+        this.groundbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for craters and movement
+        this.hitbox =    scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for projectiles
 
-        // edit the bounding boxes later
-        this.hitbox.body.setSize(50, 20);
-        this.hitbox.body.setOffset(-15, -10);
+        // configuring hitboxes
+        this.groundbox.body.setSize(50, 20);
+        this.groundbox.body.setOffset(-15, -10);
+        this.groundbox.body.setImmovable(true);
+        this.hitbox.body.setImmovable(true);
  
         // tracker for mouth laser tracking TODO LATER
         this.tracker = scene.add.sprite(this.x - 10, this.y, "empty").setOrigin(0.5);
@@ -87,6 +88,7 @@ class Player {
         this.rigby.x += x;
         this.mordecai.x += x;
         this.hitbox.x += x;
+        this.groundbox.x += x;
         this.tracker.x += x;
         this.launchPoint.x +=x;
     }
@@ -94,6 +96,7 @@ class Player {
         this.rigby.y += y;
         this.mordecai.y += y;
         this.hitbox.y += y;
+        this.groundbox += y;
         this.tracker.y += y;
         this.launchPoint.y += y;
     }
@@ -102,12 +105,12 @@ class Player {
         this.setY(y);
     }
 
-    // simplifying to just have one position to focus on
+    // simplifying to just have one position to focus on (groundbox)
     getX() {
-        return this.hitbox.x;
+        return this.groundbox.x;
     }
     getY() {
-        return this.hitbox.y;
+        return this.groundbox.y;
     }
 }
 
