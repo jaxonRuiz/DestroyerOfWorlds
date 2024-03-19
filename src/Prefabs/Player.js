@@ -27,6 +27,13 @@ class Player {
         // hit sound
         this.hitSounds = [scene.sound.add("hit1SFX"), scene.sound.add("hit2SFX"), scene.sound.add("hit3SFX"), scene.sound.add("hit4SFX")];
 
+        // add health bar frame and fill
+        scene.add.sprite(50, game.config.height* 1/16, "healthBar")
+            .setScale(0.5)
+            .setOrigin(0, 0.5);
+        this.healthBar = scene.add.sprite(50, game.config.height* 1/16, "healthBarFill")
+            .setScale(0.5)
+            .setOrigin(0, 0.5);
 
         // making launch point at rigby head (?)
         this.launchPoint = scene.add.sprite(this.rigby.x, this.rigby.y - this.rigby.height/3, "empty").setOrigin(0.5, 1);
@@ -49,6 +56,14 @@ class Player {
             run: new M_RunState(),
             dash: new M_DashState(),
         }, [scene, this]);
+
+        // for the hit function to work
+        this.scene = scene;
+    }
+
+    // updating player healthbar
+    setHealthBar(percent) {
+        this.healthBar.setCrop(0, 0, this.healthBar.width * percent, this.healthBar.height);
     }
 
     // when player is hit. default damage is set to 10
@@ -58,6 +73,8 @@ class Player {
         // randomized hit sfx:
         let sfx = this.hitSounds[Math.floor(Math.random()*this.hitSounds.length)]
         sfx.play();
+
+        this.setHealthBar(this.health/this.maxHealth);
 
         // if player dies -> game over
         if (this.health <= 0) {

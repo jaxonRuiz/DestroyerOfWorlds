@@ -19,8 +19,12 @@ class Destroyer extends Phaser.GameObjects.Sprite {
 
 
         // add health bar frame and fill
-        scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBar").setOrigin(0.5,0.5);
-        this.healthBar = scene.add.sprite(game.config.width * 6/16, game.config.height* 1/16, "healthBarFill").setOrigin(0.5,0.5);
+        scene.add.sprite(game.config.width - 50, game.config.height* 1/16, "healthBar")
+            .setScale(0.5)
+            .setOrigin(1, 0.5);
+        this.healthBar = scene.add.sprite(game.config.width - 50, game.config.height* 1/16, "healthBarFill")
+            .setScale(0.5)
+            .setOrigin(1, 0.5);
 
         // Destroyer data
         scene.physics.add.existing(this);
@@ -174,6 +178,6 @@ class Destroyer extends Phaser.GameObjects.Sprite {
 
     // 
     setHealthBar(percent) {
-        this.healthBar.setCrop(0, 0, this.healthBar.width * percent, this.healthBar.height);
+        this.healthBar.setCrop(this.healthBar.width-this.healthBar.width * percent, 0, this.healthBar.width * percent, this.healthBar.height);
     }
 }
