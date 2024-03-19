@@ -1,9 +1,9 @@
 // buttons for the menu screens
 
 class Button {
-    constructor(scene, x, y, text, key, callback, callbackScope) {
+    constructor(scene, x, y, text, key, callback, callbackScope, padding=200) {
         this.self = scene.add.bitmapText(x, y, 'pixel_font', text, '50').setOrigin(0.5);
-        this.pad = 200;
+        this.pad = padding;
         this.triangles = [
             scene.add.bitmapText(x-this.pad, y, 'pixel_font', '>', '72'),
             scene.add.bitmapText(x+this.pad, y, 'pixel_font', '<', '72'),
@@ -19,6 +19,7 @@ class Button {
         
         // dirties
         this.selected = false;
+        this.disabled = false;
         this.deselect();
 
         // blinking effect
@@ -46,10 +47,21 @@ class Button {
         }
     }
     select() {
-        this.selected = true;
-        for (const tringle of this.triangles) {
-            tringle.setAlpha(1);
+        if (!this.disabled) { // should still check things manually
+            this.selected = true;
+            for (const tringle of this.triangles) {
+                tringle.setAlpha(1);
+            }
         }
+    }
+
+    disable() {
+        this.disabled = true;
+        this.self.setAlpha(0.5);
+    }
+    enable() {
+        this.disabled = false;
+        this.self.setAlpha(1);
     }
 
     blink() {

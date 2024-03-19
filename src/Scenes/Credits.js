@@ -15,12 +15,14 @@ General Backend Code: Jaxon Ruiz
 Art: Lyssa Li, Jaxon Ruiz
 
 SFX from pixabay.com
-Font from dafont.com`
+Pixel-Font from dafont.com
 
+TY Professor Nathan for
+teaching the class :)`
          
         // add text
         this.add.bitmapText(game.config.width/2, 130, 'pixel_font', 'CREDITS', '72').setOrigin(0.5);
-        this.add.bitmapText(game.config.width/2, 180, 'pixel_font', creditsText, '42').setOrigin(0.5, 0);
+        this.add.bitmapText(game.config.width/2, game.config.height/2, 'pixel_font', creditsText, '42').setOrigin(0.5);
         this.b = new Button(this, game.config.width/2, game.config.height-150, 'RETURN', keyEnter, this.returnButton, this);
         this.b.select();
     }
