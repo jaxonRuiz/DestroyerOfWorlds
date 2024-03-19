@@ -17,6 +17,10 @@
  *      Timers (used for button blinking)
  *      (probably other ones too but im not sure what exactly counts and dont wanna pad too much lol)
  *      
+ * Aethetic notes:
+ *      the golf cart and folding chairs, though not quite fitting the hell theme of the rest of the game, did appear in the episode we're basing this on
+ *      so we'd like to just clarify the otherwise conspicious golf cart and folding chairs sprites
+ * 
  * Current todos:
  *      *** finish player sprite
  *      add destroyer animations
