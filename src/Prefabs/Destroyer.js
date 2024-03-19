@@ -44,9 +44,9 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.eyeLaserPool = new Set();
 
         // UNFINISHED MOUTH LASER TODO (didnt get to in time, might do later)
-        // this.mouthLaserActive = false
-        // this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
-        // this.scene.add.existing(this.mouthLaser);
+        this.mouthLaserActive = false
+        this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
+        this.scene.add.existing(this.mouthLaser);
 
         // adding destroyer animations:
         this.anims.create({
@@ -59,8 +59,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
             }) 
         })
 
-        this.anims.play("idle");
-        console.log("attempting to play anim");
+        
     }
 
     update() {
@@ -68,7 +67,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         for (const eyeLaser of this.eyeLaserPool) {
             eyeLaser.update();
             if (eyeLaser.isOOB()) {
-                console.log("laser oob");
+                // console.log("laser oob");
                 this.eyeLaserPool.delete(eyeLaser);
                 eyeLaser.destroy();
             }
@@ -98,7 +97,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.eyeLaserPool.add(laser)
         this.laserShotSFX.play();
         
-        this.scene.physics.add.collider(laser, this.scene.player.groundbox, () => {
+        this.scene.physics.add.collider(laser, target, () => {
             laser.destroy();
             this.eyeLaserPool.delete(laser);
             console.log("laser hit");

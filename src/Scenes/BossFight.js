@@ -99,9 +99,9 @@ class BossFight extends Phaser.Scene {
 
             // debug button for testing
             if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
-                this.enableGraderMode();
+                //this.enableGraderMode();
                 
-                // this.destroyer.toggleMouthLaser(this.player.hitbox);
+                this.destroyer.toggleMouthLaser(this.player.groundbox);
                 // this.destroyer.shootMouthLaser(this.player.hitbox);
             }
         }

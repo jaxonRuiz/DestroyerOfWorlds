@@ -18,7 +18,8 @@ SFX from pixabay.com
 Pixel-Font from dafont.com
 
 TY Professor Nathan for
-teaching the class :)`
+teaching the class :)
+`
          
         // add text
         this.add.bitmapText(game.config.width/2, 130, 'pixel_font', 'CREDITS', '72').setOrigin(0.5);

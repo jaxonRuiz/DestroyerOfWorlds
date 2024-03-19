@@ -5,6 +5,7 @@ class Player {
         this.x = 150;
         this.y = game.config.width/2;
         let scaler = 0.35; // internal use to make life easier
+
         this.rigby = scene.add.sprite(this.x, this.y-150, "rigby_S")
             .setOrigin(0.5, 1)
             .setScale(scaler);
@@ -16,11 +17,15 @@ class Player {
         this.groundbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for craters and movement
         this.hitbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for projectiles
 
+        this.hitbox.y -= this.mordecai.height/2;
+
         // configuring hitboxes
         this.groundbox.body.setSize(this.mordecai.width*scaler*0.9, 20);
         this.groundbox.body.setOffset(-this.mordecai.width*scaler*0.45, -10);
-        this.hitbox.body.setSize(-this.mordecai.width*scaler*0.7, -this.mordecai.height*scaler*0.7);
-        this.hitbox.body.setOffset(this.mordecai.width*scaler*0.35 , -this.mordecai.height*scaler*0.25);
+
+        this.hitbox.body.setSize(this.mordecai.width*scaler*0.7, this.mordecai.height*scaler*1.225);
+        this.hitbox.body.setOffset(-this.mordecai.width*scaler*0.35 , this.mordecai.height*scaler*0.3);
+        //this.hitbox.body.setOffset(this.mordecai.width*scaler*0.35 , -this.mordecai.height*scaler*0.25);
 
         this.groundbox.body.setImmovable(true);
         this.hitbox.body.setImmovable(true);
