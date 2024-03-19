@@ -66,7 +66,7 @@ class Preload extends Phaser.Scene {
         this.load.image("ballProjectile", "img/ballProjectile.png");
         this.load.image("mouthLaser", "img/mouthLaser.png");
 
-        // add player launcher parts
+        // add player arrow
         this.load.image("aimArrow", "img/aimArrow.png");      
 
         // add chair projectile
@@ -145,14 +145,14 @@ class Preload extends Phaser.Scene {
         keyP1A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
         keyP1S = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
         keyP1D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-        keyP1S1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+        //keyP1S1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
         keyP1S2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SHIFT);
         keyP2W = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
         keyP2A = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
         keyP2S= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
         keyP2D = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        keyP2S1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
-        keyP2S2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
+        //keyP2S1 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.K); 
+        //keyP2S2 = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J); 
 
         // player animations        
         // this.anims.create({

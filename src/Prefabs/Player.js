@@ -117,7 +117,7 @@ class R_IdleState extends State {
 class R_AimState extends State {
     enter(scene, player) {
         console.log("rigby aiming");
-        this.arrow = new Phaser.GameObjects.TileSprite(scene, player.launchPoint.y, player.launchPoint.y, 250, 16, "mouthLaser").setOrigin(0, 0.5);
+        this.arrow = new Phaser.GameObjects.Sprite(scene, player.launchPoint.y, player.launchPoint.y, "aimArrow").setOrigin(0, 0.5);
         scene.add.existing(this.arrow);
         this.arrow.setRotation(-0.5);
         // (maybe add button prompt for clarity)
@@ -133,7 +133,6 @@ class R_AimState extends State {
         // maybe add aim wobble while aiming?
         //Phaser.Input.Keyboard.isDown(keyP2D)
 
-
         if (keyP2A.isDown && this.arrow.rotation > -2) {
             this.arrow.setAngle(this.arrow.angle - rotationSpeed);
         }
@@ -142,7 +141,7 @@ class R_AimState extends State {
         }
 
         // lock aim
-        if (Phaser.Input.Keyboard.JustDown(keyP2S1)) {
+        if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
             this.arrow.destroy();
             player.theta = this.arrow.rotation;
             this.stateMachine.transition("shoot");
@@ -179,7 +178,7 @@ class R_ShootState extends State {
             this.power -= 0.01;
         }
 
-        if (Phaser.Input.Keyboard.JustDown(keyP2S2)) {
+        if (Phaser.Input.Keyboard.JustDown(keyEnter)) {
             console.log("transition to cooldown");
             player.power = this.power;
             this.chargeBar.destroy();
