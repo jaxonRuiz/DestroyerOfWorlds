@@ -16,7 +16,7 @@ class EyeLaser extends Phaser.GameObjects.Sprite {
     // returns true if laser is out of bounds (OOB)
     isOOB() {
         if (this.x > game.config.width + this.width/2 || this.x < 0 - this.width/2) return true;
-        if (this.y > game.config.height + this.height/2 || this.y < 0 - this.height/2) return true;
+        if (this.y > game.config.height + this.height/2 || this.y < 0 - this.height*2) return true;
         return false;
     }
 }
