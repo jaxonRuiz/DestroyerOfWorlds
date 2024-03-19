@@ -98,7 +98,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.eyeLaserPool.add(laser)
         this.laserShotSFX.play();
         
-        this.scene.physics.add.collider(laser, this.scene.player.hitbox, () => {
+        this.scene.physics.add.collider(laser, this.scene.player.groundbox, () => {
             laser.destroy();
             this.eyeLaserPool.delete(laser);
             console.log("laser hit");
@@ -125,7 +125,6 @@ class Destroyer extends Phaser.GameObjects.Sprite {
 
     }
     shootMouthLaser(target) {
-        console.log("shootMouthLaser()");
         this.mouthLaser.setTarget(target);
         this.mouthLaser.setSpawn(this); // update later with more specific spawn point. TODO
         this.mouthLaser.update();

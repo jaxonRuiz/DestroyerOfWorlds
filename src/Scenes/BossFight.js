@@ -49,7 +49,7 @@ class BossFight extends Phaser.Scene {
         this.player = new Player(this);
 
         // add craters
-        this.craters = new CraterGroup(this, [{object: this.player, hitbox: this.player.hitbox}], 5);
+        this.craters = new CraterGroup(this, [{object: this.player, hitbox: this.player.groundbox}], 5);
 
         // create Destroyer (within comments i *will* be insisting on capitalization for the Destroyer of Worlds)
         this.destroyer = new Destroyer(this, game.config.width * 7/8, 0, "destroyer_S", 0).setOrigin(0.5, 0).setDepth(0);
