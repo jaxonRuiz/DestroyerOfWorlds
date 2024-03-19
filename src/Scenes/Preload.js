@@ -88,6 +88,9 @@ class Preload extends Phaser.Scene {
         this.load.image("destroyer_HP", "img/tiny_destroyer.png");
         this.load.image("player_HP", "img/tiny_player.png");
         
+        // help screen tile
+        this.load.image("helpScreen", "img/helpScreen-Sheet.png");
+
         // ------ audio assets ------
 
         // load background track (boss theme)
@@ -123,11 +126,11 @@ class Preload extends Phaser.Scene {
         this.load.audio("hit4SFX", "sounds/hit4.mp3");
         this.load.audio("laserShotSFX", "sounds/laser-shot.mp3");
         this.load.audio("pewSFX", "sounds/pew.mp3");
-        this.load.audio("pingSFX", "sounds/ping-sfx-cropped.mp3");
         this.load.audio("smallImpactSFX", "sounds/simple-impact.mp3");
         
-
         // button/ui sfx
+        this.load.audio("pingSFX", "sounds/ping-sfx-cropped.mp3");
+
         // player charging sfx
         // player shoot sfx
         // player jump sfx (?)

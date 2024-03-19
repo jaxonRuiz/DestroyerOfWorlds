@@ -17,8 +17,8 @@ class Help extends Phaser.Scene {
         this.buttons.prev.disable();
         this.lastSelect = 'next'; // just for good feels
         this.page = 0;
-        this.totalPages = 4; // remember to change this manually!!
-        this.pages = this.add.tileSprite(0, game.config.height/2-30, game.config.width, 500, 'rigby_S')
+        this.totalPages = 2; // remember to change this manually!!
+        this.pages = this.add.tileSprite(0, game.config.height/2-30, game.config.width, 500, 'helpScreen')
             .setOrigin(0, 0.5);
     }
     // sounds from pixabay
@@ -84,7 +84,7 @@ class Help extends Phaser.Scene {
         // update page style
         this.pages.tilePositionX = this.page * game.config.width;
         // update next button
-        if (this.page === this.totalPages) {
+        if (this.page === this.totalPages-1) {
             this.buttons.next.disable();
             this.buttons.next.deselect();
             this.lastSelect = 'prev';
