@@ -44,6 +44,9 @@ class BossFight extends Phaser.Scene {
         this.bg_T = this.add.tileSprite(-10, -10, game.config.width+20, 650, "bg_T")
             .setOrigin(0)
             .setDepth(-10);
+        this.bg2_T = this.add.tileSprite(-10, -10, game.config.width+20, 650, "bg2_T")
+            .setOrigin(0)
+            .setDepth(-10);
 
         // add player
         this.player = new Player(this);
@@ -81,6 +84,8 @@ class BossFight extends Phaser.Scene {
         if (this.isPlaying) {
             // updating background
             this.ground_T.tilePositionX += game.settings.scrollSpeed;
+            this.bg_T.tilePositionX += game.settings.scrollSpeed/2;
+            this.bg2_T.tilePositionX += game.settings.scrollSpeed;
 
             // update craters
             this.craters.update();
