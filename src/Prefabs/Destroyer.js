@@ -42,13 +42,11 @@ class Destroyer extends Phaser.GameObjects.Sprite {
 
         // set up eye laser attacks better
         this.eyeLaserPool = new Set();
-        
 
-
-        this.mouthLaserActive = false
-        // UNFINISHED MOUTH LASER TODO
-        this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
-        this.scene.add.existing(this.mouthLaser);
+        // UNFINISHED MOUTH LASER TODO (didnt get to in time, might do later)
+        // this.mouthLaserActive = false
+        // this.mouthLaser = new MouthLaser(this.scene, this.x, this.y);
+        // this.scene.add.existing(this.mouthLaser);
 
         // adding destroyer animations:
         this.anims.create({

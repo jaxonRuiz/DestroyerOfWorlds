@@ -13,7 +13,7 @@ class Player {
 
         // hitboxes
         this.groundbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for craters and movement
-        this.hitbox =    scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for projectiles
+        this.hitbox = scene.physics.add.sprite(this.x, this.y, "empty").setOrigin(0.5); // hitbox for projectiles
 
         // configuring hitboxes
         this.groundbox.body.setSize(50, 20);
@@ -96,7 +96,7 @@ class Player {
         this.rigby.y += y;
         this.mordecai.y += y;
         this.hitbox.y += y;
-        this.groundbox += y;
+        this.groundbox.y += y;
         this.tracker.y += y;
         this.launchPoint.y += y;
     }
