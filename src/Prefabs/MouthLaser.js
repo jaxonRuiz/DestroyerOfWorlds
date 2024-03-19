@@ -7,8 +7,6 @@ class MouthLaser extends Phaser.GameObjects.TileSprite {
         this.lineLength;
         this.setOrigin(1, 0.5);
         
-        
-        
         scene.physics.add.existing(this);
         this.body.setAllowRotation(true);
         scene.add.existing(this);

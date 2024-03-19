@@ -9,17 +9,19 @@ class Preload extends Phaser.Scene {
     preload() {
         console.log("start Preload Scene preload()");
         this.load.setPath('./assets/');
-        // empty sprite for physics bounding boxes (because i can't think of a better way to do it)
+
+
+        // empty sprite for physics bounding boxes (might not be necessry but oh well)
         this.load.image("empty", "img/empty.png");
-        // font
+        
+        // load font
         this.load.bitmapFont('pixel_font', 'font/pixel_font32.png', 'font/pixel_font32.xml')
 
-        // ------ (planned) visual assets ------
-        // (todo remove 'planned' later lol)
 
-        // planned assets to load:
-// TODOOO CHANGE THE SPRITE SHEET PATH WHEN WE GET ACTUAL SPITESSS
-        // player1 sprite+animations
+        // TODO get back to and finish
+        // ------ game sprites ------
+
+        // load rigby sprite
         this.load.image("rigby_S", "img/rigby.png");
         // this.load.spritesheet('rigby_S', 'img/sampleSprite.png', {
         //     frameWidth: 50,
@@ -28,7 +30,7 @@ class Preload extends Phaser.Scene {
         //     endFrame: 7
         // });
 
-        // player2 sprite+animations
+        // load mordecai sprite
         this.load.image("mordecai_S", "img/mordecai.png");
         // this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
         //     frameWidth: 50,
@@ -37,56 +39,64 @@ class Preload extends Phaser.Scene {
         //     endFrame: 7
         // });
 
+        // load Destroyer spritesheet
         this.load.spritesheet("destroyer_S", "img/destroyerSpritesheet.png", {
             frameWidth: 312,
             frameHeight: 552,
             startFrame: 0,
             endFrame: 7
         });
-            // shot projectile sprite(s)
-        // destroyerofworlds sprite+animations
-            // mouth laser attack sprite+animation
-            // eye laser attack projectiles
-        // (scrolling) ground sprite
+        
+        // load (scrolling) ground sprite
         this.load.image('ground_T', 'img/ground.png'); // ground that players run on
+        
         // background image 
             // split into layers for parralax probably?
             // foreground elements?
-            
-        // extra 'juice' effects and stuff? might conflict with 'arcade' style but might be cooler?
-        // platforms(?)
-        // ground obstacals(?) holes and stuff?
+
+
+        // add extra 'juice' effects and stuff? might conflict with 'arcade' style but might be cooler?
+
+        // load crater sprite
         this.load.image('crater_S', 'img/crater.png');
 
-        // add health bar
+        // load health bar frame and fill sprites
         this.load.image('healthBar', 'img/healthBar.png');
         this.load.image("healthBarFill", "img/healthBarFill.png");
 
-        // add projectile sprites
+        // Destroyer attack sprites
         this.load.image("ballProjectile", "img/ballProjectile.png");
         this.load.image("mouthLaser", "img/mouthLaser.png");
 
-        // add player arrow
+        // player aiming arrow
         this.load.image("aimArrow", "img/aimArrow.png");      
 
-        // add chair projectile
+        // chair projectile
         this.load.image("thrownChair", "img/chair.png");
 
         
         // ------ audio assets ------
 
-        // background track (boss theme)
+        // load background track (boss theme)
         this.load.audio("bg_music", "sounds/background-music.mp3");
+
+        // load Destroyer hit sounds (multiple to add variance)
         this.load.audio("destroyerHit1SFX", "sounds/arcade-hit1.mp3"); // as in the sound played when Destroyer gets hit
         this.load.audio("destroyerHit2SFX", "sounds/arcade-hit2.mp3");
         this.load.audio("destroyerHit3SFX", "sounds/arcade-hit3.mp3");
         this.load.audio("destroyerHit4SFX", "sounds/arcade-hurt-sfx.mp3");
+        this.load.audio("destroyerSmallHitSFX", "sounds/arcade-small-hit.mp3"); // TODO add; forgot to add earlier
+
+
+        // load ascend sound (unused)
         this.load.audio("ascendSFX", "sounds/arcade-ascend-sfx.mp3");
         this.load.audio("bleep_n_bloopSFX", "sounds/arcade-bleepNbloop.mp3");
-        this.load.audio("destroyerSmallHitSFX", "sounds/arcade-small-hit.mp3");
+        
+        // load success sound(s)
         this.load.audio("successSFX", "sounds/arcade-success-sfx.mp3");
-        this.load.audio("chargeUpSFX", "sounds/charge-up.mp3");
         this.load.audio("victorySFX", "sounds/cheesy-win-sfx.mp3");
+
+        this.load.audio("chargeUpSFX", "sounds/charge-up.mp3");
         this.load.audio("collect1SFX", "sounds/collect-sfx1.mp3");
         this.load.audio("collect2SFX", "sounds/collect-sfx2.mp3");
         this.load.audio("destroyerDefeatSFX", "sounds/defeat-boom.mp3");

@@ -5,7 +5,6 @@ class EyeLaser extends Phaser.GameObjects.Sprite {
         
         this.movementVector = new Phaser.Math.Vector2(target.x - spawnX, target.y - spawnY);
         this.body.setVelocity(this.movementVector.x, this.movementVector.y);
-
     }
 
     // sets movement vector for eye laser
@@ -14,7 +13,7 @@ class EyeLaser extends Phaser.GameObjects.Sprite {
         this.body.setVelocity(this.movementVector.x, this.movementVector.y);
     }
 
-    // checks if laser is out of bounds (OOB)
+    // returns true if laser is out of bounds (OOB)
     isOOB() {
         if (this.x > game.config.width + this.width/2 || this.x < 0 - this.width/2) return true;
         if (this.y > game.config.height + this.height/2 || this.y < 0 - this.height/2) return true;

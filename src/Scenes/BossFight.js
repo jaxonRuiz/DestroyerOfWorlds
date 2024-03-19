@@ -90,8 +90,9 @@ class BossFight extends Phaser.Scene {
 
             // debug button for testing
             if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
-                //this.destroyer.generateEyeLaser(this.player.hitbox);
-                this.destroyer.toggleMouthLaser(this.player.hitbox);
+                this.enableGraderMode();
+                
+                // this.destroyer.toggleMouthLaser(this.player.hitbox);
                 // this.destroyer.shootMouthLaser(this.player.hitbox);
             }
         }
@@ -102,7 +103,6 @@ class BossFight extends Phaser.Scene {
         this.isPlaying = false;
         this.music.pause();
         this.gameOverSFX.play();
-        // maybe add a game over sound here!!
         this.scene.start('gameoverScene');
     }
 
@@ -111,7 +111,6 @@ class BossFight extends Phaser.Scene {
         this.isPlaying = false;
         this.music.pause();
         this.victorySFX.play();
-        // maybe add a game over sound here!!
         this.scene.start('victoryScreen'); // accidental inconsisten naming - oops
     }
 
@@ -120,5 +119,14 @@ class BossFight extends Phaser.Scene {
         // reset variables maybe
         this.isPlaying = true;
         this.music.play();
+    }
+
+    enableGraderMode() {
+        console.log("Grader Mode enabled!");
+        // currently no way to disable in game >:(
+        this.player.health = 2000;
+        this.player.maxHealth = 2000;
+        // this.player.damage = 35;
+        this.add.bitmapText(game.config.width/2, game.config.height, 'pixel_font', 'Grader Mode enabled: 2k health', '32').setOrigin(0.5, 1).setTintFill(0x000000);
     }
 }

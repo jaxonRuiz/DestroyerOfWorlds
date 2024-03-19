@@ -19,26 +19,29 @@ class Player {
         // edit the bounding boxes later
         this.hitbox.body.setSize(50, 20);
         this.hitbox.body.setOffset(-15, -10);
-
-        // TODO later
+ 
+        // tracker for mouth laser tracking TODO LATER
         this.tracker = scene.add.sprite(this.x - 10, this.y, "empty").setOrigin(0.5);
 
 
-        // sounds
+        // hit sound
         this.hitSounds = [scene.sound.add("hit1SFX"), scene.sound.add("hit2SFX"), scene.sound.add("hit3SFX"), scene.sound.add("hit4SFX")];
 
 
-        //making launch point at rigby head (?)
+        // making launch point at rigby head (?)
         this.launchPoint = scene.add.sprite(this.rigby.x, this.rigby.y - this.rigby.height/3, "empty").setOrigin(0.5, 1);
         this.health = 100;
         this.maxHealth = 100;
+        this.damage = 10;
 
         // internal player object 
+        // (mixup with how to use state machine resulted in this)
         this.player = {
             rigby: this.rigby,
             launchPoint: this.launchPoint,
             mordecai: this.mordecai,
             hitbox: this.hitbox,
+            damage: this.damage,
             theta: -1,
             power: 0,
             setX: (x) => {
@@ -79,22 +82,18 @@ class Player {
             dash: new M_DashState(),
         }, [scene, this.player]);
         // realized WAY too late we were using the state machine wrong
-
-        // save for other functions
-        this.scene = scene;
+        // we should just have passed in 'this' instead of the inner player object we made
     }
 
-    update() {
-        // player movement
-        console.log('bad idea');
-    }
-
-    // hitting crater
+    // when player is hit. default damage is set to 10
     hit(damage = 10) {
         this.health -= damage;
-        console.log(this.health);
+
+        // randomized hit sfx:
         let sfx = this.hitSounds[Math.floor(Math.random()*this.hitSounds.length)]
         sfx.play();
+
+        // if player dies -> game over
         if (this.health <= 0) {
             this.scene.gameOver();
         }
@@ -204,7 +203,7 @@ class R_CooldownState extends State {
 
         // setting collision
         scene.physics.add.collider(scene.destroyer, this.chair, () => {
-            scene.destroyer.getHit(10);
+            scene.destroyer.getHit(player.damage); // change to this.damage if fix player
             this.chair.destroy();
             this.stateMachine.transition("idle");
         })

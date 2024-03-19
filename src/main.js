@@ -26,6 +26,9 @@
  *      *** add help screen
  *      (MAYBE) clean up player code and change some buttons around...
  *      * change crater sprite
+ *      ** add player health bar
+ *      add color tint effects?
+ *      add player shield or dash?
  */
 
 let config = {

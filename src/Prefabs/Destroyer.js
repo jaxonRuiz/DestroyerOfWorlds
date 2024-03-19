@@ -2,6 +2,7 @@
 
 class Destroyer extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
+        // constructor and scene stuff
         super(scene, x, y, texture, frame);
         scene.add.existing(this);
         
@@ -31,7 +32,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.currentHealth = 100;
         this.maxHealth = 100;
 
-        // set up eye laser attacks better TODO
+        // set up eye laser attacks better
         this.eyeLaserPool = new Set();
         
 
@@ -76,7 +77,7 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     // returns
     getHit(damage) {
         this.currentHealth -= damage;
-        
+        console.log("destroyer hit for: " + damage);
         if (this.currentHealth <= 0) {
             this.die();
         }
