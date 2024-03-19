@@ -48,7 +48,7 @@ class Preload extends Phaser.Scene {
         });
         
         // load (scrolling) ground sprite
-        this.load.image('ground_T', 'img/ground.png'); // ground that players run on
+        this.load.image('ground_T', 'img/ground2.png'); // ground that players run on
         
         // background image 
             // split into layers for parralax probably?
