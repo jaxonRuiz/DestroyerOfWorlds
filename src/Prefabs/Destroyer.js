@@ -74,7 +74,6 @@ class Destroyer extends Phaser.GameObjects.Sprite {
     }
 
     // damage as an int
-    // returns
     getHit(damage) {
         this.currentHealth -= damage;
         console.log("destroyer hit for: " + damage);

@@ -58,7 +58,7 @@ class Preload extends Phaser.Scene {
         // add extra 'juice' effects and stuff? might conflict with 'arcade' style but might be cooler?
 
         // load crater sprite
-        this.load.image('crater_S', 'img/crater.png');
+        this.load.image('crater_S', 'img/crater_v4.png');
 
         // load health bar frame and fill sprites
         this.load.image('healthBar', 'img/healthBar.png');
@@ -86,7 +86,6 @@ class Preload extends Phaser.Scene {
         this.load.audio("destroyerHit3SFX", "sounds/arcade-hit3.mp3");
         this.load.audio("destroyerHit4SFX", "sounds/arcade-hurt-sfx.mp3");
         this.load.audio("destroyerSmallHitSFX", "sounds/arcade-small-hit.mp3"); // TODO add; forgot to add earlier
-
 
         // load ascend sound (unused)
         this.load.audio("ascendSFX", "sounds/arcade-ascend-sfx.mp3");
