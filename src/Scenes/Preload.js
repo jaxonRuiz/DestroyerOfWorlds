@@ -22,7 +22,7 @@ class Preload extends Phaser.Scene {
         // ------ game sprites ------
 
         // load rigby sprite
-        this.load.image("rigby_S", "img/rigby.png");
+        this.load.image("rigby_S", "img/catapultRigby.png");
         // this.load.spritesheet('rigby_S', 'img/sampleSprite.png', {
         //     frameWidth: 50,
         //     frameHeight: 35,
@@ -31,7 +31,7 @@ class Preload extends Phaser.Scene {
         // });
 
         // load mordecai sprite
-        this.load.image("mordecai_S", "img/mordecai.png");
+        this.load.image("mordecai_S", "img/cartMordecai.png");
         // this.load.spritesheet('mordecai_S', 'img/sampleSprite.png', {
         //     frameWidth: 50,
         //     frameHeight: 35,
