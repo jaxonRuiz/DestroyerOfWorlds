@@ -47,8 +47,9 @@ class Preload extends Phaser.Scene {
             endFrame: 7
         });
         
-        // load (scrolling) ground sprite
+        // load (scrolling) background sprites
         this.load.image('ground_T', 'img/ground2.png'); // ground that players run on
+        this.load.image("bg_T", "img/main_background.png");
         
         // background image 
             // split into layers for parralax probably?
@@ -74,7 +75,7 @@ class Preload extends Phaser.Scene {
         // chair projectile
         this.load.image("thrownChair", "img/chair.png");
 
-        // hit animation
+        // hit spritesheet for animation
         this.load.spritesheet("itemHit", "img/hit-Sheet.png", {
             frameWidth: 25,
             frameHeight: 25,
@@ -82,6 +83,9 @@ class Preload extends Phaser.Scene {
             endFrame: 7,
         });
 
+        // health bar add-ons
+        this.load.image("destroyer_HP", "img/tiny_destroyer.png");
+        this.load.image("player_HP", "img/tiny_player.png");
         
         // ------ audio assets ------
 

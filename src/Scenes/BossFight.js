@@ -40,6 +40,10 @@ class BossFight extends Phaser.Scene {
         this.ground_T = this.add.tileSprite(-10, game.config.height, game.config.width+25, game.settings.runPathHeight, "ground_T")
             .setOrigin(0, 1)
             .setDepth(-5);
+        // create backgound
+        this.bg_T = this.add.tileSprite(-10, -10, game.config.width+20, 650, "bg_T")
+            .setOrigin(0)
+            .setDepth(-10);
 
         // add player
         this.player = new Player(this);
