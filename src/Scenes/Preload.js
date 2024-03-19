@@ -74,6 +74,14 @@ class Preload extends Phaser.Scene {
         // chair projectile
         this.load.image("thrownChair", "img/chair.png");
 
+        // hit animation
+        this.load.spritesheet("itemHit", "img/hit-Sheet.png", {
+            frameWidth: 25,
+            frameHeight: 25,
+            startFrame: 0,
+            endFrame: 7,
+        });
+
         
         // ------ audio assets ------
 
@@ -170,6 +178,14 @@ class Preload extends Phaser.Scene {
         //     frames: this.anims.generateFrameNumbers('rigby_S', {start: 0, end: 5}),
         //     frameRate: 15,
         // })
+
+        // couple of animations
+        this.anims.create({
+            key: "boom",
+            frames: this.anims.generateFrameNumbers("itemHit", { start: 0, end: 7}),
+            frameRate: 15,
+        });
+
         console.log("finished Preload Scene create()");
         console.log("launching menu scene now...");
 

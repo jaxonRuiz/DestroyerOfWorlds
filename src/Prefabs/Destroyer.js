@@ -36,6 +36,10 @@ class Destroyer extends Phaser.GameObjects.Sprite {
         this.currentHealth = 100;
         this.maxHealth = 100;
 
+        // offset hitbox
+        this.body.setSize(200, 350);
+        this.body.setOffset(50, 150);
+
         // set up eye laser attacks better
         this.eyeLaserPool = new Set();
         

@@ -217,6 +217,12 @@ class R_CooldownState extends State {
             scene.destroyer.getHit(player.damage); // change to this.damage if fix player
             this.chair.destroy();
             this.stateMachine.transition("idle");
+
+            // some juice for the hit
+            const boom = scene.add.sprite(this.chair.x+this.chair.width, this.chair.y, "itemHit")
+                .setScale(3)
+                .setOrigin(0.5);
+            boom.play("boom");
         })
     }
 
