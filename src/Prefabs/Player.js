@@ -33,42 +33,10 @@ class Player {
         this.health = 100;
         this.maxHealth = 100;
         this.damage = 10;
-
-        // internal player object 
-        // (mixup with how to use state machine resulted in this)
-        this.player = {
-            rigby: this.rigby,
-            launchPoint: this.launchPoint,
-            mordecai: this.mordecai,
-            hitbox: this.hitbox,
-            damage: this.damage,
-            theta: -1,
-            power: 0,
-            setX: (x) => {
-                this.rigby.x += x;
-                this.mordecai.x += x;
-                this.hitbox.x += x;
-                this.tracker.x += x;
-                this.launchPoint.x +=x;
-            },
-            setY: (y) => {
-                this.rigby.y += y;
-                this.mordecai.y += y;
-                this.hitbox.y += y;
-                this.tracker.y += y;
-                this.launchPoint.y += y;
-            },
-            setDirection: (x, y) => {
-                this.player.setX(x);
-                this.player.setY(y);
-            },
-            getX: () => {
-                return this.hitbox.x;
-            },
-            getY: () => {
-                return this.hitbox.y;
-            }
-        }
+        
+        // math values to carry over
+        this.theta = -1;
+        this.power = 0;
 
         // state machines
         scene.rigbyFSM = new StateMachine('idle', {
@@ -76,13 +44,11 @@ class Player {
             aim: new R_AimState(),
             shoot: new R_ShootState(),
             cooldown: new R_CooldownState(),
-        }, [scene, this.player]);
+        }, [scene, this]);
         scene.mordecaiFSM = new StateMachine('run', {
             run: new M_RunState(),
             dash: new M_DashState(),
-        }, [scene, this.player]);
-        // realized WAY too late we were using the state machine wrong
-        // we should just have passed in 'this' instead of the inner player object we made
+        }, [scene, this]);
     }
 
     // when player is hit. default damage is set to 10
@@ -97,6 +63,34 @@ class Player {
         if (this.health <= 0) {
             this.scene.gameOver();
         }
+    }
+
+    // helper movement functions since lots of objects need to move together
+    setX(x) {
+        this.rigby.x += x;
+        this.mordecai.x += x;
+        this.hitbox.x += x;
+        this.tracker.x += x;
+        this.launchPoint.x +=x;
+    }
+    setY(y) {
+        this.rigby.y += y;
+        this.mordecai.y += y;
+        this.hitbox.y += y;
+        this.tracker.y += y;
+        this.launchPoint.y += y;
+    }
+    setDirection(x, y) {
+        this.setX(x);
+        this.setY(y);
+    }
+
+    // simplifying to just have one position to focus on
+    getX() {
+        return this.hitbox.x;
+    }
+    getY() {
+        return this.hitbox.y;
     }
 }
 

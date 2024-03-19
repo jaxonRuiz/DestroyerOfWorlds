@@ -126,7 +126,7 @@ class BossFight extends Phaser.Scene {
         // currently no way to disable in game >:(
         this.player.health = 2000;
         this.player.maxHealth = 2000;
-        // this.player.damage = 35;
-        this.add.bitmapText(game.config.width/2, game.config.height, 'pixel_font', 'Grader Mode enabled: 2k health', '32').setOrigin(0.5, 1).setTintFill(0x000000);
+        this.player.damage = 35;
+        this.add.bitmapText(game.config.width/2, game.config.height, 'pixel_font', 'Grader Mode enabled: 2k health, damage++', '32').setOrigin(0.5, 1).setTintFill(0x000000);
     }
 }
