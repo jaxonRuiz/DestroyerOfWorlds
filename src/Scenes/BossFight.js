@@ -105,12 +105,12 @@ class BossFight extends Phaser.Scene {
             this.player.time = new Date();
 
             // debug button for testing
-            // if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
-            //     //this.enableGraderMode();
+            if (Phaser.Input.Keyboard.JustDown(this.keyDebug)) {
+                this.enableGraderMode();
                 
-            //     this.destroyer.toggleMouthLaser(this.player.groundbox);
-            //     // this.destroyer.shootMouthLaser(this.player.hitbox);
-            // }
+                //this.destroyer.toggleMouthLaser(this.player.groundbox);
+                // this.destroyer.shootMouthLaser(this.player.hitbox);
+            }
         }
     }
 
